@@ -6,7 +6,7 @@
   </div>
 </template>
 
-<style>
+<style lang="scss">
 html,
 body {
   margin: 0;
@@ -22,5 +22,24 @@ body {
 }
 .app-container {
   height: 100%;
+}
+.result-page-container {
+  box-sizing: border-box;
+  text-align: center;
+  height: 100%;
+  min-height: 400px;
+  padding-top: 50px;
+
+  .result-title {
+    color: rgba(0, 0, 0, 0.85);
+    font-size: 24px;
+    line-height: 1.8;
+  }
+  .result-subtitle {
+    color: rgba(0, 0, 0, 0.45);
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
 }
 </style>

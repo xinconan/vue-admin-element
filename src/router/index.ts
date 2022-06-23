@@ -27,6 +27,27 @@ export const routes: RouteRecordRaw[] = [
       },
     ],
   },
+  {
+    path: '/error',
+    component: Layout,
+    children: [
+      {
+        name: '403',
+        path: '403',
+        component: () => import('@/views/error/403.vue'),
+      },
+      {
+        name: '404',
+        path: '404',
+        component: () => import('@/views/error/404.vue'),
+      },
+      {
+        name: '500',
+        path: '500',
+        component: () => import('@/views/error/500.vue'),
+      },
+    ],
+  },
 ];
 
 export const router = createRouter({

@@ -17,8 +17,11 @@ declare module '@vue/runtime-core' {
     ElScrollbar: typeof import('element-plus/es')['ElScrollbar']
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
     ExitFullScreen: typeof import('./src/components/icon/exit-full-screen.vue')['default']
+    NotFound: typeof import('./src/components/icon/not-found.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    ServerError: typeof import('./src/components/icon/server-error.vue')['default']
+    Unauthorized: typeof import('./src/components/icon/unauthorized.vue')['default']
   }
 }
 

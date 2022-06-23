@@ -5,6 +5,7 @@ export const appStore = defineStore({
   state: () => {
     return {
       collapse: false,
+      menuActive: 'home',
     };
   },
   getters: {
@@ -15,6 +16,9 @@ export const appStore = defineStore({
   actions: {
     toggleCollapse() {
       this.collapse = !this.collapse;
+    },
+    setMenuActive(active: string) {
+      this.menuActive = active;
     },
   },
 });
