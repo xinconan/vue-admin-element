@@ -23,4 +23,7 @@ export default defineConfig({
     }),
     vue(),
   ],
+  server: {
+    port: 3000,
+  },
 });
