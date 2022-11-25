@@ -1,93 +1,121 @@
 <template>
   <el-aside :class="{ collapse: collapse, 'sidebar-container': true }">
-    <div class="logo-wrap">VueAdmin</div>
+    <div class="logo-wrap flex items-center justify-center">
+      <img
+        :class="{ 'mr-4': !collapse }"
+        src="../../assets/logo.png"
+        alt="logo"
+      />
+      <span v-show="!collapse">VueAdmin</span>
+    </div>
+    <!-- menu, 支持2级菜单 -->
     <el-scrollbar>
       <el-menu
         :default-active="menuActive"
         :collapse="collapse"
         @open="handleOpen"
       >
-        <el-menu-item index="home" @click="onMenuClick('home')">
-          <el-icon>
-            <Menu />
-          </el-icon>
-          <template #title>Home</template>
-        </el-menu-item>
-        <el-sub-menu index="form">
-          <template #title>
-            <el-icon>
-              <Document />
+        <template v-for="permission in permissions">
+          <el-menu-item
+            v-if="!permission.children"
+            :index="permission.path"
+            @click="onMenuClick(permission.path)"
+          >
+            <el-icon v-if="permission.icon">
+              <component :is="permission.icon" />
             </el-icon>
-            <span>form表单</span>
-          </template>
-          <el-menu-item index="form-1">表单1</el-menu-item>
-          <el-menu-item index="form-2" @click="onMenuClick('form1')"
-            >表单2</el-menu-item
-          >
-        </el-sub-menu>
-        <el-sub-menu index="form2">
-          <template #title>
-            <el-icon><Medal /></el-icon>
-            <span>组件</span>
-          </template>
-          <el-menu-item index="form-1">表单1</el-menu-item>
-          <el-menu-item index="form-2" @click="onMenuClick('form1')"
-            >表单2</el-menu-item
-          >
-        </el-sub-menu>
-        <el-sub-menu index="form3">
-          <template #title>
-            <el-icon>
-              <Failed />
-            </el-icon>
-            <span>错误页面</span>
-          </template>
-          <el-menu-item index="403" @click="onMenuClick('403')">
-            403页面
+            <template #title>{{ permission.title }}</template>
           </el-menu-item>
-          <el-menu-item index="404" @click="onMenuClick('404')">
-            404页面
-          </el-menu-item>
-          <el-menu-item index="500" @click="onMenuClick('500')">
-            500页面
-          </el-menu-item>
-        </el-sub-menu>
-        <el-sub-menu index="form4">
-          <template #title>
-            <el-icon><Setting /></el-icon>
-            <span>form表单</span>
-          </template>
-          <el-menu-item index="form-1">表单1</el-menu-item>
-          <el-menu-item index="form-2" @click="onMenuClick('form1')"
-            >表单2</el-menu-item
-          >
-        </el-sub-menu>
-        <el-sub-menu index="form5">
-          <template #title>
-            <el-icon><TrendCharts /></el-icon>
-            <span>form表单</span>
-          </template>
-          <el-menu-item index="form-1">表单1</el-menu-item>
-          <el-menu-item index="form-2" @click="onMenuClick('form1')"
-            >表单2</el-menu-item
-          >
-        </el-sub-menu>
+          <el-sub-menu v-else :index="permission.path">
+            <template #title>
+              <el-icon v-if="permission.icon">
+                <component :is="permission.icon" />
+              </el-icon>
+              <span>{{ permission.title }}</span>
+            </template>
+            <el-menu-item
+              v-for="child in permission.children"
+              :index="child.path"
+              @click="onMenuClick(child.path)"
+            >
+              <el-icon v-if="child?.icon">
+                <component :is="child.icon" />
+              </el-icon>
+              <template #title>{{ child.title }}</template>
+            </el-menu-item>
+          </el-sub-menu>
+        </template>
       </el-menu>
     </el-scrollbar>
   </el-aside>
 </template>
 
 <script setup lang="ts">
-import { useRouter } from 'vue-router';
+import { useRouter, useRoute } from 'vue-router';
 import { storeToRefs } from 'pinia';
-import { appStore } from '@/store/modules/app.ts';
-import { ref } from 'vue';
+import { useAppStore } from '@/store/modules/app.ts';
+import { computed, ref } from 'vue';
 
 const router = useRouter();
+const route = useRoute();
 const active = ref('home');
 
-const store = appStore();
-const { collapse, menuActive } = storeToRefs(store);
+const store = useAppStore();
+const { collapse } = storeToRefs(store);
+
+const permissions = ref([
+  {
+    path: '/dashboard',
+    title: 'Home',
+    icon: 'Menu',
+  },
+  {
+    path: '/form',
+    title: 'form表单',
+    icon: 'Document',
+    children: [
+      {
+        path: '/form/form1',
+        title: 'form1',
+        icon: 'Document',
+      },
+    ],
+  },
+  {
+    path: '/comp',
+    title: '组件',
+    icon: 'Medal',
+    children: [
+      {
+        path: '/comp/comp1',
+        title: '组件1',
+        icon: '',
+      },
+    ],
+  },
+  {
+    path: '/error',
+    title: '错误页',
+    icon: 'Failed',
+    children: [
+      {
+        path: '/error/403',
+        title: '403',
+        icon: '',
+      },
+      {
+        path: '/error/404',
+        title: '404',
+        icon: '',
+      },
+      {
+        path: '/error/500',
+        title: '500',
+        icon: '',
+      },
+    ],
+  },
+]);
 
 const handleOpen = (key: string, keyPath: string[]) => {
   console.log(key, keyPath);
@@ -95,12 +123,18 @@ const handleOpen = (key: string, keyPath: string[]) => {
 
 const onMenuClick = (path: string) => {
   console.log(path);
-  router.push({ name: path });
-  store.setMenuActive(path);
+  router.push(path);
 };
 const setActive = () => {
   active.value = 'home';
 };
+const menuActive = computed(() => {
+  const { meta, path } = route;
+  if (meta?.activeMenu) {
+    return meta.activeMenu;
+  }
+  return path;
+});
 </script>
 
 <style lang="scss">
@@ -120,8 +154,12 @@ const setActive = () => {
   .logo-wrap {
     height: 60px;
     line-height: 60px;
-    text-align: center;
     flex-shrink: 0;
+
+    img {
+      width: 44px;
+      height: 44px;
+    }
   }
 
   .el-menu {

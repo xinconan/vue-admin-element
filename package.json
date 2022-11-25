@@ -11,6 +11,7 @@
     "@vueuse/core": "^9.6.0",
     "element-plus": "^2.2.22",
     "pinia": "^2.0.14",
+    "pinia-plugin-persistedstate": "^2.4.0",
     "vue": "^3.2.45",
     "vue-router": "4"
   },

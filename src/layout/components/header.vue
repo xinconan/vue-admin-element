@@ -21,12 +21,12 @@
 // import { useRouter } from 'vue-router';
 import { storeToRefs } from 'pinia';
 import { useFullscreen } from '@vueuse/core';
-import { appStore } from '@/store/modules/app.ts';
+import { useAppStore } from '@/store/modules/app.ts';
 import ExitFullScreen from '@/components/icon/exit-full-screen.vue';
 
 // const router = useRouter();
 
-const store = appStore();
+const store = useAppStore();
 const { collapse } = storeToRefs(store);
 
 const toggle = () => {

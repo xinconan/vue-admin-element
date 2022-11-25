@@ -1,8 +1,16 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
 import type { RouteRecordRaw } from 'vue-router';
 import Layout from '../layout/index.vue';
+import { useAppStore } from '../store/modules/app';
+
+const whiteList = ['/login'];
 
 export const routes: RouteRecordRaw[] = [
+  {
+    path: '/login',
+    component: () => import('@/views/login/index.vue'),
+    name: 'login',
+  },
   {
     path: '/',
     component: Layout,
@@ -13,6 +21,7 @@ export const routes: RouteRecordRaw[] = [
         name: 'dashboard',
         path: '/dashboard',
         component: () => import('@/views/dashboard/index.vue'),
+        meta: {  },
       },
     ],
   },
@@ -24,6 +33,7 @@ export const routes: RouteRecordRaw[] = [
         name: 'form1',
         path: 'form1',
         component: () => import('@/views/form/index.vue'),
+        meta: {  },
       },
     ],
   },
@@ -53,4 +63,21 @@ export const routes: RouteRecordRaw[] = [
 export const router = createRouter({
   history: createWebHashHistory(),
   routes,
+});
+
+router.beforeEach(async (to, from, next) => {
+  const store = useAppStore();
+  if (store.isLogin) {
+    if (to.path === '/login') {
+      next({ path: '/' });
+    } else {
+      next();
+    }
+  } else {
+    if (whiteList.includes(to.path)) {
+      next();
+    } else {
+      next(`/login?return=${to.path}`);
+    }
+  }
 });

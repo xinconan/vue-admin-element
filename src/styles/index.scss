@@ -1,0 +1,21 @@
+// 部分类名参考 tailwind 命名
+// flex
+.flex {
+  display: flex;
+}
+.items-center {
+  align-items: center;
+}
+.justify-center {
+  justify-content: center;
+}
+
+// margin
+.mr-4 {
+  margin-right: 16px;
+}
+
+// width
+.w-full {
+  width: 100%;
+}
