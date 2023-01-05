@@ -22,6 +22,10 @@ body {
 }
 .app-container {
   height: 100%;
+  
+  .el-switch__core .el-switch__inner .is-icon, .el-switch__core .el-switch__inner .is-text {
+    color: var(--page-text-color);
+  }
 }
 .result-page-container {
   box-sizing: border-box;
@@ -31,12 +35,12 @@ body {
   padding-top: 50px;
 
   .result-title {
-    color: rgba(0, 0, 0, 0.85);
+    color: var(--page-text-color);
     font-size: 24px;
     line-height: 1.8;
   }
   .result-subtitle {
-    color: rgba(0, 0, 0, 0.45);
+    color: var(--el-text-color-primary);
     font-size: 14px;
     line-height: 1.6;
     margin-bottom: 16px;

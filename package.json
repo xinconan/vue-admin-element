@@ -7,9 +7,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@element-plus/icons-vue": "^2.0.6",
-    "@vueuse/core": "^9.6.0",
-    "element-plus": "^2.2.22",
+    "@element-plus/icons-vue": "^2.0.10",
+    "@vueuse/core": "^9.10.0",
+    "element-plus": "^2.2.28",
     "pinia": "^2.0.14",
     "pinia-plugin-persistedstate": "^2.4.0",
     "vue": "^3.2.45",

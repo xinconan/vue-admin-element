@@ -1,3 +1,23 @@
+@use './dark.scss';
+@use 'element-plus/theme-chalk/src/dark/css-vars.scss' as *;
+
+:root {
+  --bg-color: var(--el-bg-color);
+  --page-bg-color: #f0f2f5;
+  --page-text-color: rgba(0,0,0,0.85);
+  --footer-text-color: rgba(0, 0, 0, 0.45);
+}
+
+html.dark {
+  --page-bg-color: #1d1e1f;
+  --page-text-color: rgba(255,255,255,0.85);
+  --footer-text-color: #e5eaf3;
+}
+
+body {
+  background-color: var(--bg-color);
+}
+
 // 部分类名参考 tailwind 命名
 // flex
 .flex {
@@ -11,11 +31,25 @@
 }
 
 // margin
+.mr-3 {
+  margin-right: 12px;
+}
 .mr-4 {
   margin-right: 16px;
+}
+.ml-3 {
+  margin-left: 12px;
+}
+.ml-4 {
+  margin-left: 16px;
 }
 
 // width
 .w-full {
   width: 100%;
+}
+
+// cursor
+.cursor-pointer {
+  cursor: pointer;
 }

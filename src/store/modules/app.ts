@@ -8,6 +8,7 @@ export const useAppStore = defineStore('app', {
       user: {
         token: '',
         name: '',
+        avatar: '',
       },
     };
   },
@@ -36,6 +37,13 @@ export const useAppStore = defineStore('app', {
     setUserInfo(name: string, token: string) {
       this.user.name = name;
       this.user.token = token;
+      // prettier-ignore
+      this.user.avatar = 'https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png';
+    },
+    logout() {
+      this.user.name = '';
+      this.user.token = '';
+      this.user.avatar = '';
     },
   },
 });

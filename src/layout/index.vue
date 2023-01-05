@@ -23,11 +23,11 @@ import Header from './components/header.vue';
   height: 100%;
 }
 .main-container {
-  background-color: #f0f2f5;
+  background-color: var(--page-bg-color);
 }
 .footer-container {
-  background-color: #f0f2f5;
-  color: rgba(0, 0, 0, 0.45);
+  background-color: var(--page-bg-color);
+  color: var(--footer-text-color);
   display: flex;
   align-items: center;
 

@@ -13,13 +13,25 @@ export default defineConfig({
     alias: {
       '@/': `${pathSrc}/`,
     },
+    extensions: ['.ts', '.js', '.vue', '.json'],
   },
+  // css: {
+  //   preprocessorOptions: {
+  //     scss: {
+  //       additionalData: `@use "@/styles/dark.scss" as *;`,
+  //     },
+  //   },
+  // },
   plugins: [
     AutoImport({
       resolvers: [ElementPlusResolver()],
     }),
     Components({
-      resolvers: [ElementPlusResolver()],
+      resolvers: [
+        ElementPlusResolver({
+          importStyle: 'sass',
+        }),
+      ],
     }),
     vue(),
   ],
