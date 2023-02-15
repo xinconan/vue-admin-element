@@ -1,5 +1,6 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
 import type { RouteRecordRaw } from 'vue-router';
+import { start, done } from '@/utils/nprogress';
 import Layout from '../layout/index.vue';
 import { useAppStore } from '../store/modules/app';
 
@@ -35,6 +36,12 @@ export const routes: RouteRecordRaw[] = [
         component: () => import('@/views/form/index.vue'),
         meta: {  },
       },
+      {
+        name: 'imgPreview',
+        path: 'imgPreview',
+        component: () => import('@/views/form/imgPreview.vue'),
+        meta: {  },
+      },
     ],
   },
   {
@@ -58,6 +65,10 @@ export const routes: RouteRecordRaw[] = [
       },
     ],
   },
+  {
+    path: '/:pathMatch(.*)*',
+    redirect: '/error/404'
+  }
 ];
 
 export const router = createRouter({
@@ -66,6 +77,7 @@ export const router = createRouter({
 });
 
 router.beforeEach(async (to, from, next) => {
+  start();
   const store = useAppStore();
   if (store.isLogin) {
     if (to.path === '/login') {
@@ -81,3 +93,7 @@ router.beforeEach(async (to, from, next) => {
     }
   }
 });
+
+router.afterEach(() => {
+  done()
+})

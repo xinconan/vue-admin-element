@@ -79,6 +79,11 @@ const permissions = ref([
         title: 'form1',
         icon: 'Document',
       },
+      {
+        path: '/form/imgPreview',
+        title: '图片预览',
+        icon: 'Picture',
+      },
     ],
   },
   {

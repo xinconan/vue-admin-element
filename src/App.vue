@@ -46,4 +46,7 @@ body {
     margin-bottom: 16px;
   }
 }
+#nprogress .bar {
+  background: var(--el-color-primary) !important;
+}
 </style>

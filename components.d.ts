@@ -25,6 +25,7 @@ declare module '@vue/runtime-core' {
     ElScrollbar: typeof import('element-plus/es')['ElScrollbar']
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
     ElSwitch: typeof import('element-plus/es')['ElSwitch']
+    ElUpload: typeof import('element-plus/es')['ElUpload']
     ExitFullScreen: typeof import('./src/components/icon/exit-full-screen.vue')['default']
     NotFound: typeof import('./src/components/icon/not-found.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
