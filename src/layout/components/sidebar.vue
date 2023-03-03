@@ -53,7 +53,7 @@
 <script setup lang="ts">
 import { useRouter, useRoute } from 'vue-router';
 import { storeToRefs } from 'pinia';
-import { useAppStore } from '@/store/modules/app.ts';
+import { useAppStore } from '@/store/modules/app';
 import { computed, ref } from 'vue';
 
 const router = useRouter();

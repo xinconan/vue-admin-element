@@ -27,9 +27,14 @@ import { useClipboard } from '@vueuse/core';
 import { ref, watchEffect } from 'vue';
 import { get } from '../../utils/request';
 
+interface IBook{
+  name: string;
+  id: string;
+}
+
 const page = ref(1);
 const total = ref(0);
-const list = ref([]);
+const list = ref<IBook[]>([]);
 const bookRef = ref();
 
 const {copy} = useClipboard()

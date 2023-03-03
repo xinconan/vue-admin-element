@@ -41,7 +41,7 @@
 import { useRouter } from 'vue-router';
 import { storeToRefs } from 'pinia';
 import { useFullscreen, useDark } from '@vueuse/core';
-import { useAppStore } from '@/store/modules/app.ts';
+import { useAppStore } from '@/store/modules/app';
 import ExitFullScreen from '@/components/icon/exit-full-screen.vue';
 import { Sunny, Moon } from '@element-plus/icons-vue';
 
