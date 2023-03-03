@@ -22,7 +22,7 @@ export const routes: RouteRecordRaw[] = [
         name: 'dashboard',
         path: '/dashboard',
         component: () => import('@/views/dashboard/index.vue'),
-        meta: {  },
+        meta: {},
       },
     ],
   },
@@ -34,13 +34,25 @@ export const routes: RouteRecordRaw[] = [
         name: 'form1',
         path: 'form1',
         component: () => import('@/views/form/index.vue'),
-        meta: {  },
+        meta: {},
+      },
+      {
+        name: 'tax',
+        path: 'tax',
+        component: () => import('@/views/form/tax.vue'),
+        meta: { title: '个税计算器' },
+      },
+      {
+        name: 'epub',
+        path: 'epub',
+        component: () => import('@/views/form/epub.vue'),
+        meta: { title: '异步电子书' },
       },
       {
         name: 'imgPreview',
         path: 'imgPreview',
         component: () => import('@/views/form/imgPreview.vue'),
-        meta: {  },
+        meta: {},
       },
     ],
   },
@@ -67,8 +79,8 @@ export const routes: RouteRecordRaw[] = [
   },
   {
     path: '/:pathMatch(.*)*',
-    redirect: '/error/404'
-  }
+    redirect: '/error/404',
+  },
 ];
 
 export const router = createRouter({
@@ -95,5 +107,5 @@ router.beforeEach(async (to, from, next) => {
 });
 
 router.afterEach(() => {
-  done()
-})
+  done();
+});

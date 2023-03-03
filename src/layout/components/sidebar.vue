@@ -80,6 +80,16 @@ const permissions = ref([
         icon: 'Document',
       },
       {
+        path: '/form/tax',
+        title: '个税计算器',
+        icon: 'Calendar',
+      },
+      {
+        path: '/form/epub',
+        title: '异步电子书',
+        icon: 'Reading',
+      },
+      {
         path: '/form/imgPreview',
         title: '图片预览',
         icon: 'Picture',
