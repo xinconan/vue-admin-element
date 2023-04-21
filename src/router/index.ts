@@ -49,10 +49,27 @@ export const routes: RouteRecordRaw[] = [
         meta: { title: '异步电子书' },
       },
       {
+        name: 'turing',
+        path: 'turing',
+        component: () => import('@/views/form/turing.vue'),
+        meta: { title: '图灵电子书' },
+      },
+      {
         name: 'imgPreview',
         path: 'imgPreview',
         component: () => import('@/views/form/imgPreview.vue'),
         meta: {},
+      },
+    ],
+  },
+  {
+    path: '/util',
+    component: Layout,
+    children: [
+      {
+        name: 'feishu',
+        path: 'feishu',
+        component: () => import('@/views/util/bytedance.vue'),
       },
     ],
   },

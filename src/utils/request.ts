@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import { ElMessage } from 'element-plus';
 const req = axios.create({
   withCredentials: true,
@@ -7,12 +7,12 @@ const req = axios.create({
 });
 
 req.interceptors.response.use(
-  (res) => {
+  (res: AxiosResponse) => {
     if (res.status >= 200 && res.status < 300) {
       return res.data;
     }
 
-    return res;
+    return Promise.reject(res);
   },
   (err) => {
     console.log('err: ', err);
@@ -27,6 +27,6 @@ req.interceptors.response.use(
   }
 );
 
-export function get(url: string, params?: any) {
+export function get<T>(url: string, params?: any): Promise<T> {
   return req.get(url, { params });
 }

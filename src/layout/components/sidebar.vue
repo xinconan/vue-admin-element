@@ -90,6 +90,11 @@ const permissions = ref([
         icon: 'Reading',
       },
       {
+        path: '/form/turing',
+        title: '图灵电子书',
+        icon: 'Reading',
+      },
+      {
         path: '/form/imgPreview',
         title: '图片预览',
         icon: 'Picture',
@@ -105,6 +110,17 @@ const permissions = ref([
         path: '/comp/comp1',
         title: '组件1',
         icon: '',
+      },
+    ],
+  },
+  {
+    path: '/util',
+    title: '工具箱',
+    icon: 'Box',
+    children: [
+      {
+        path: '/util/feishu',
+        title: '飞书文档',
       },
     ],
   },
