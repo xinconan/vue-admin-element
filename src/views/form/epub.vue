@@ -32,6 +32,13 @@ interface IBook{
   id: string;
 }
 
+interface IEpubRes {
+  data: {
+    total: number;
+    records: IBook[]
+  }
+}
+
 const page = ref(1);
 const total = ref(0);
 const list = ref<IBook[]>([]);
@@ -40,7 +47,7 @@ const bookRef = ref();
 const {copy} = useClipboard()
 
 function getBookList() {
-  get(`/epub/ebook?page=${page.value}`).then(({ data }) => {
+  get<IEpubRes>(`/epub/ebook?page=${page.value}`).then(({ data }) => {
     console.log(data);
     total.value = data.total;
     list.value = data.records;

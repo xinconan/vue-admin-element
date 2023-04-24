@@ -63,7 +63,14 @@ const active = ref('home');
 const store = useAppStore();
 const { collapse } = storeToRefs(store);
 
-const permissions = ref([
+interface IMenu{
+  path: string;
+  title: string;
+  icon?: string;
+  children?: IMenu[]
+}
+
+const permissions = ref<IMenu[]>([
   {
     path: '/dashboard',
     title: 'Home',
@@ -159,10 +166,10 @@ const onMenuClick = (path: string) => {
 const setActive = () => {
   active.value = 'home';
 };
-const menuActive = computed(() => {
+const menuActive = computed<string>(() => {
   const { meta, path } = route;
   if (meta?.activeMenu) {
-    return meta.activeMenu;
+    return meta.activeMenu as string;
   }
   return path;
 });
