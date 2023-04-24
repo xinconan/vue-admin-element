@@ -4,7 +4,7 @@ const req = axios.create({
   withCredentials: true,
   timeout: 10000,
   baseURL: import.meta.env.PROD
-    ? 'https://x-nest.vercal.app'
+    ? 'https://x-nest.vercel.app'
     : 'http://127.0.0.1:3001',
 });
 
