@@ -3,7 +3,9 @@ import { ElMessage } from 'element-plus';
 const req = axios.create({
   withCredentials: true,
   timeout: 10000,
-  baseURL: 'http://127.0.0.1:3001',
+  baseURL: import.meta.env.PROD
+    ? 'https://x-nest.vercal.app'
+    : 'http://127.0.0.1:3001',
 });
 
 req.interceptors.response.use(
