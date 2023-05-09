@@ -71,6 +71,11 @@ export const routes: RouteRecordRaw[] = [
         path: 'feishu',
         component: () => import('@/views/util/bytedance.vue'),
       },
+      {
+        name: 'rsa',
+        path: 'rsa',
+        component: () => import('@/views/util/rsa.vue'),
+      },
     ],
   },
   {

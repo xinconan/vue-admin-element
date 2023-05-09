@@ -129,6 +129,10 @@ const permissions = ref<IMenu[]>([
         path: '/util/feishu',
         title: '飞书文档',
       },
+      {
+        path: '/util/rsa',
+        title: 'RSA加解密',
+      },
     ],
   },
   {
