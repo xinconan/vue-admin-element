@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col h-full">
+  <div class="flex flex-col h-full" v-loading="loading">
     <div class="flex">
       <el-radio-group v-model="type">
         <el-radio :label="1">文字</el-radio>
@@ -14,22 +14,33 @@
           </template>
         </ul>
         <el-row v-else :gutter="10">
-        <el-col :xs="6" :sm="6" :md="4" :lg="3" :xl="2" v-for="book in list" :key="book.id">
-          <el-card class="book-card">
-            <img :src="`https://file.ituring.com.cn/LargeCover/${book.coverKey}`"/>
-            <div>
-              <span>{{ book.name }}</span>
-            </div>
-          </el-card>
-        </el-col></el-row>
+          <el-col
+            :xs="6"
+            :sm="6"
+            :md="4"
+            :lg="3"
+            :xl="2"
+            v-for="book in list"
+            :key="book.id"
+          >
+            <el-card class="book-card">
+              <img
+                :src="`https://file.ituring.com.cn/LargeCover/${book.coverKey}`"
+              />
+              <div>
+                <span>{{ book.name }}</span>
+              </div>
+            </el-card>
+          </el-col>
+        </el-row>
       </div>
     </section>
     <div class="flex">
       <el-pagination
-      v-model:current-page="page"
-      :total="total"
-      :page-size="15"
-      layout="total,prev, pager,next,jumper"
+        v-model:current-page="page"
+        :total="total"
+        :page-size="15"
+        layout="total,prev, pager,next,jumper"
       />
     </div>
   </div>
@@ -39,43 +50,47 @@
 import { ref, watchEffect } from 'vue';
 import { get } from '../../utils/request';
 
-interface IBook{
+interface IBook {
   name: string;
   id: string;
   coverKey: string;
 }
-interface IRes{
+interface IRes {
   pagination: {
-    totalItemCount: number,
-  },
-  bookItems: IBook[]
+    totalItemCount: number;
+  };
+  bookItems: IBook[];
 }
 
+const loading = ref(true);
 const type = ref(1);
 const page = ref(1);
 const total = ref(0);
 const list = ref<IBook[]>([]);
 const bookRef = ref();
 
-
 function getBookList() {
-  get<IRes>(`/epub/turing?page=${page.value}`).then(( data ) => {
-    total.value = data.pagination.totalItemCount;
-    list.value = data.bookItems;
-  });
+  loading.value = true;
+  get<IRes>(`/epub/turing?page=${page.value}`)
+    .then((data) => {
+      total.value = data.pagination.totalItemCount;
+      list.value = data.bookItems;
+    })
+    .finally(() => {
+      loading.value = false;
+    });
 }
 
 watchEffect(async () => {
   getBookList();
 });
-
 </script>
 
 <style lang="scss" scoped>
 .content {
   height: calc(100% - 32px);
 }
-.book-card{
+.book-card {
   img {
     width: 100%;
   }

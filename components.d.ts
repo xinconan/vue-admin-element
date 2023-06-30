@@ -44,4 +44,7 @@ declare module '@vue/runtime-core' {
     ServerError: typeof import('./src/components/icon/server-error.vue')['default']
     Unauthorized: typeof import('./src/components/icon/unauthorized.vue')['default']
   }
+  export interface ComponentCustomProperties {
+    vLoading: typeof import('element-plus/es')['ElLoadingDirective']
+  }
 }

@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col h-full">
+  <div class="flex flex-col h-full" v-loading="loading">
     <section class="content">
       <div class="h-full overflow-auto" ref="bookRef">
         <ul>
@@ -10,12 +10,11 @@
       </div>
     </section>
     <div class="flex">
-
       <el-pagination
-      v-model:current-page="page"
-      :total="total"
-      :page-size="20"
-      layout="total,prev, pager,next,jumper"
+        v-model:current-page="page"
+        :total="total"
+        :page-size="20"
+        layout="total,prev, pager,next,jumper"
       />
       <el-button type="primary" @click="doCopy">复制</el-button>
     </div>
@@ -27,7 +26,7 @@ import { useClipboard } from '@vueuse/core';
 import { ref, watchEffect } from 'vue';
 import { get } from '../../utils/request';
 
-interface IBook{
+interface IBook {
   name: string;
   id: string;
 }
@@ -35,23 +34,29 @@ interface IBook{
 interface IEpubRes {
   data: {
     total: number;
-    records: IBook[]
-  }
+    records: IBook[];
+  };
 }
 
+const loading = ref(true);
 const page = ref(1);
 const total = ref(0);
 const list = ref<IBook[]>([]);
 const bookRef = ref();
 
-const {copy} = useClipboard()
+const { copy } = useClipboard();
 
 function getBookList() {
-  get<IEpubRes>(`/epub/ebook?page=${page.value}`).then(({ data }) => {
-    console.log(data);
-    total.value = data.total;
-    list.value = data.records;
-  });
+  loading.value = true;
+  get<IEpubRes>(`/epub/ebook?page=${page.value}`)
+    .then(({ data }) => {
+      console.log(data);
+      total.value = data.total;
+      list.value = data.records;
+    })
+    .finally(() => {
+      loading.value = false;
+    });
 }
 
 watchEffect(async () => {
@@ -59,9 +64,9 @@ watchEffect(async () => {
 });
 
 function doCopy() {
-  const content = bookRef.value?.textContent
+  const content = bookRef.value?.textContent;
   console.log(content);
-  copy(content)
+  copy(content);
 }
 </script>
 
