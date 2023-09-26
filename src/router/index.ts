@@ -55,6 +55,18 @@ export const routes: RouteRecordRaw[] = [
         meta: { title: '图灵电子书' },
       },
       {
+        name: 'cxstar',
+        path: 'cxstar',
+        component: () => import('@/views/form/cxstar.vue'),
+        meta: { title: '畅想之星' },
+      },
+      {
+        name: 'cxSearch',
+        path: 'cxSearch',
+        component: () => import('@/views/form/cxstar-search.vue'),
+        meta: { title: '畅想之星搜索' },
+      },
+      {
         name: 'imgPreview',
         path: 'imgPreview',
         component: () => import('@/views/form/imgPreview.vue'),

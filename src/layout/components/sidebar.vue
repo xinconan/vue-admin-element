@@ -102,6 +102,16 @@ const permissions = ref<IMenu[]>([
         icon: 'Reading',
       },
       {
+        path: '/form/cxstar',
+        title: '畅想之星',
+        icon: 'Reading',
+      },
+      {
+        path: '/form/cxSearch',
+        title: '畅想之星搜索',
+        icon: 'Search',
+      },
+      {
         path: '/form/imgPreview',
         title: '图片预览',
         icon: 'Picture',
