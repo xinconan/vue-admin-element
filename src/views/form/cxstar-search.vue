@@ -13,6 +13,7 @@
       style="width: 300px"
       placeholder="输入关键词搜索"
       v-model="keyword"
+      @keyup.enter="doSearch"
     />
     <el-button type="primary" @click="search">搜索</el-button>
   </div>
@@ -96,7 +97,7 @@
 
 <script lang="ts" setup>
 import cxstarItem from './components/cxstar-item.vue';
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import { get } from '@/utils/request';
 import { ICxRes, ICxBook } from '@/types/book';
 import { libraries } from '@/utils/const';
@@ -116,6 +117,8 @@ const total = ref(0);
 
 function onChange(id: string) {
   ifbg.value = libraries.find((item) => item.pinst === id)!.ifbg;
+  page.value = 1;
+  search();
 }
 
 function setFilter(field: string) {
@@ -135,7 +138,13 @@ function setPubdate(date: string) {
   search();
 }
 
+function doSearch() {
+  page.value = 1;
+  search();
+}
+
 function search() {
+  if (!keyword.value) return;
   loading.value = true;
   get<ICxRes>(
     `/epub/cxstar/search?keyword=${keyword.value}&pinst=${pinst.value}&page=${page.value}&ifbg=${ifbg.value}&sortField=${sortField.value}&publisher=${publisher.value}&pubdate=${pubdate.value}`
@@ -150,6 +159,10 @@ function search() {
       loading.value = false;
     });
 }
+
+watch(page, () => {
+  search();
+});
 </script>
 
 <style lang="scss" scoped>

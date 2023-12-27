@@ -143,6 +143,10 @@ const permissions = ref<IMenu[]>([
         path: '/util/rsa',
         title: 'RSA加解密',
       },
+      {
+        path: '/util/qcloud',
+        title: 'qcloud',
+      },
     ],
   },
   {

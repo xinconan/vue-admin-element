@@ -27,6 +27,8 @@
       <div>
         <a :href="`https://www.cxstar.com/Book/Detail?ruid=${book.ruid}&packageruid=`" target="_blank" rel="noreferrer noopener">畅想</a>
         <a :href="`https://elib.cqlib.cn:8081/interlibSSO/goto/65/++9bwrs-q9bnl/Book/Detail?ruid=${book.ruid}&packageruid=`" target="_blank" rel="noreferrer noopener">重庆图书馆</a>
+        <a :href="`https://sso.gzlib.org.cn/interlibSSO/goto/184/++9bwrs-q9bnl/Book/Detail?ruid=${book.ruid}&packageruid=`" target="_blank" rel="noreferrer noopener">广州图书馆</a>
+        <a :href="`http://gfgfab3e1aaa3118d4124s6x6pxvnf95o56pnf.fhhh.ntszzy.org:8070/Book/Detail?ruid=${book.ruid}&packageruid=`" target="_blank" rel="noreferrer noopener">南京图书馆</a>
         <a :href="`http://sso.lnlib.com/interlibSSO/goto/100/++9bwrs-q9bnl/Book/Detail?ruid=${book.ruid}&packageruid=`" target="_blank" rel="noreferrer noopener">辽宁图书馆</a>
         <a :href="`http://sm.interlib.cn:8086/vpn/54/https/www.cxstar.com/Book/Detail?ruid=${book.ruid}&packageruid=`" target="_blank" rel="noreferrer noopener">中新天津图书馆</a>
       </div>

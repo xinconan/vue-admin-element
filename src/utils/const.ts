@@ -24,6 +24,24 @@ export const libraries = [
     ifbg: 1,
   },
   {
+    id: 'zslib',
+    name: '中山图书馆',
+    pinst: 'byq6JosSk64heTPDKLT',
+    ifbg: 1,
+  },
+  {
+    id: 'njlib',
+    name: '南京图书馆',
+    pinst: '214d58a1000001XXXX',
+    ifbg: 1,
+  },
+  {
+    id: 'gz',
+    name: '广州图书馆',
+    pinst: '215e7dec000001XXXX',
+    ifbg: 1,
+  },
+  {
     id: 'cqlib',
     name: '重庆图书馆',
     pinst: '20f9eecb000001XXXX',
@@ -41,4 +59,93 @@ export const libraries = [
     pinst: 'yF6xFzN9hjXcXqISIHZ',
     ifbg: 1,
   },
+  {
+    id: 'hilib',
+    name: '海南省图书馆',
+    pinst: '1cca45f90000360bce',
+    ifbg: 1,
+  },
+  {
+    id: 'cclib',
+    name: '长春图书馆',
+    pinst: '20592d0c000001XXXX',
+    ifbg: 1,
+  },
+  {
+    id: 'cdlib',
+    name: '成都图书馆',
+    pinst: '21529dec000001XXXX',
+    ifbg: 1,
+  },
+  {
+    id: 'sipac',
+    name: '苏州工业园区图书馆',
+    pinst: '1174dfc707f80',
+    ifbg: 1,
+  },
+  {
+    id: 'dglib',
+    name: '东莞图书馆',
+    pinst: '1e7d429b0000430bce',
+    ifbg: 1,
+  },
+  {
+    id: 'jmlib',
+    name: '江门市图书馆',
+    pinst: '1cf069f90000170bce',
+    ifbg: 1,
+  },
+  {
+    id: 'hztsg',
+    name: '惠州图书馆',
+    pinst: '1e96406b00015c0bce',
+    ifbg: 1,
+  },
+  {
+    id: 'fslib',
+    name: '佛山图书馆',
+    pinst: '1d4b57d20000010bce',
+    ifbg: 1,
+  },
+  {
+    id: 'mzjylib',
+    name: '梅州图书馆',
+    pinst: 'KAWW8HSuNpmX78vHGKV',
+    ifbg: 1,
+  },
+  {
+    id: 'cslib',
+    name: '长沙图书馆',
+    pinst: '1cdf84cb0001fc0bce',
+    ifbg: 1,
+  },
+];
+
+export const PUBLISHERS = [
+  '化学工业出版社',
+  '人民邮电出版社',
+  '机械工业出版社',
+  '电子工业出版社',
+  '人民卫生出版社',
+  '中国人民大学出版社',
+  '清华大学出版社',
+  '浙江大学出版社',
+  '长江文艺出版社',
+];
+
+export const PUBDATES = [
+  '2023',
+  '2022',
+  '2021',
+  '2020',
+  '2019',
+  '2018',
+  '2017',
+  '2016',
+  '2015',
+  '2014',
+  '2013',
+  '2012',
+  '2011',
+  '2010',
 ];

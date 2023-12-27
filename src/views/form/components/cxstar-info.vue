@@ -82,6 +82,7 @@ import cxstarItem from './cxstar-item.vue';
 import { ref, watchEffect } from 'vue';
 import { get } from '../../../utils/request';
 import { ICxRes, ICxBook } from '../../../../types/book';
+import { PUBLISHERS, PUBDATES } from '../../../utils/const';
 
 const props = defineProps<{
   pinst: string;
@@ -89,7 +90,7 @@ const props = defineProps<{
 }>();
 
 const loading = ref(true);
-const sortField = ref('ORDERNO');
+const sortField = ref('PUBDATED');
 const publisher = ref(''); // 出版社
 const publishers = ref({}); // 出版社列表
 const pubdate = ref(''); // 出版时间
@@ -123,8 +124,28 @@ watchEffect(() => {
     .then((res) => {
       total.value = res.total;
       books.value = res.data;
+      const dates = {};
+      const pubdate = [];
+      for (const [k, v] of Object.entries(res.pubdate)) {
+        dates[k.trim()] = v;
+        pubdate.push(k.trim());
+      }
+      const pub = Object.keys(res.publishers);
+
+      PUBLISHERS.forEach((item) => {
+        // 几个常用的出版社，如果不在返回结果里，手动加上，方便快速搜索
+        if (!pub.includes(item)) {
+          res.publishers[item] = 0;
+        }
+      });
+      PUBDATES.forEach((item) => {
+        // 几个常用的出版日期，如果不在返回结果里，手动加上，方便快速搜索
+        if (!pubdate.includes(item)) {
+          dates[item] = 0;
+        }
+      });
       publishers.value = res.publishers;
-      pubdates.value = res.pubdate;
+      pubdates.value = dates;
     })
     .finally(() => {
       loading.value = false;

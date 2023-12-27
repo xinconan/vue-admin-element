@@ -88,6 +88,11 @@ export const routes: RouteRecordRaw[] = [
         path: 'rsa',
         component: () => import('@/views/util/rsa.vue'),
       },
+      {
+        name: 'qcloud',
+        path: 'qcloud',
+        component: () => import('@/views/util/qcloud.vue'),
+      },
     ],
   },
   {
