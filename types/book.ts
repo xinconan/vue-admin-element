@@ -6,6 +6,7 @@ export interface ICxBook {
   pubdate: string;
   publisher: string;
   imgUrl: string;
+  abstract: string;
 }
 
 export interface ICxRes{

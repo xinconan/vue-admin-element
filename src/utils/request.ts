@@ -32,3 +32,7 @@ req.interceptors.response.use(
 export function get<T>(url: string, params?: any): Promise<T> {
   return req.get(url, { params });
 }
+
+export function post<T>(url: string, data?: any): Promise<T> {
+  return req.post(url, data);
+}
