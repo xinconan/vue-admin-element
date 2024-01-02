@@ -93,7 +93,7 @@ function addBook() {
     name: removeStr(book.title),
     cover: book.imgUrl,
     isbn: book.isbn.replaceAll('-', ''),
-    author: book.author.replace(/<\/?a>/g, '').replaceAll('编著', '').replace('主编', ''),
+    author: book.author.replace(/<\/?a>/g, '').replaceAll('编著', '').replace('主编', '').replaceAll('[等]', ''),
     publisher: removeStr(book.publisher),
     // pubdate: new Date(parseInt(year), parseInt(month) - 1),
     pubdate: `${year}-${month}-01 08:00:00`,
