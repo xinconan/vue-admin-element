@@ -30,39 +30,61 @@
           :href="`https://www.cxstar.com/Book/Detail?ruid=${book.ruid}&packageruid=`"
           target="_blank"
           rel="noreferrer noopener"
-          >畅想</a
         >
+          畅想
+        </a>
         <a
           :href="`https://elib.cqlib.cn:8081/interlibSSO/goto/65/++9bwrs-q9bnl/Book/Detail?ruid=${book.ruid}&packageruid=`"
           target="_blank"
           rel="noreferrer noopener"
-          >重庆图书馆</a
         >
+          重庆图书馆
+        </a>
+        <a
+          :href="`https://portal.sclib.org/interlibSSO/goto/214/++9bwrs-q9bnl/Book/Detail?ruid=${book.ruid}`"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
+          四川图书馆
+        </a>
         <a
           :href="`https://sso.gzlib.org.cn/interlibSSO/goto/184/++9bwrs-q9bnl/Book/Detail?ruid=${book.ruid}&packageruid=`"
           target="_blank"
           rel="noreferrer noopener"
-          >广州图书馆</a
         >
+          广州图书馆
+        </a>
         <a
           :href="`http://gfgfab3e1aaa3118d4124s6x6pxvnf95o56pnf.fhhh.ntszzy.org:8070/Book/Detail?ruid=${book.ruid}&packageruid=`"
           target="_blank"
           rel="noreferrer noopener"
-          >南京图书馆</a
         >
+          南京图书馆
+        </a>
         <a
           :href="`http://sso.lnlib.com/interlibSSO/goto/100/++9bwrs-q9bnl/Book/Detail?ruid=${book.ruid}&packageruid=`"
           target="_blank"
           rel="noreferrer noopener"
-          >辽宁图书馆</a
         >
+          辽宁图书馆
+        </a>
+        <a
+          :href="`http://sso.zslib.cn/interlibSSO/goto/183/++9bwrs-q9bnl/Book/Detail?ruid=${book.ruid}&packageruid=`"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
+          中山图书馆
+        </a>
         <a
           :href="`http://sm.interlib.cn:8086/vpn/54/https/www.cxstar.com/Book/Detail?ruid=${book.ruid}&packageruid=`"
           target="_blank"
           rel="noreferrer noopener"
-          >中新天津图书馆</a
         >
-        <el-button @click="addBook" type="primary" size="small">添加到图书馆</el-button>
+          中新天津图书馆
+        </a>
+        <el-button @click="addBook" type="primary" size="small">
+          添加到图书馆
+        </el-button>
       </div>
     </div>
   </div>
@@ -83,7 +105,7 @@ function getAuthor(author: string) {
 }
 
 function removeStr(str: string) {
-  return str.replace(/<\/?em>/g, '')
+  return str.replace(/<\/?em>/g, '');
 }
 
 function addBook() {
@@ -93,23 +115,30 @@ function addBook() {
     name: removeStr(book.title),
     cover: book.imgUrl,
     isbn: book.isbn.replaceAll('-', ''),
-    author: book.author.replace(/<\/?a>/g, '').replaceAll('编著', '').replace('主编', '').replaceAll('[等]', ''),
+    author: removeStr(book.author)
+      .replace(/<\/?a>/g, '')
+      .replaceAll(/等?编著/g, '')
+      .replaceAll('编绘', '')
+      .replace('主编', '')
+      .replaceAll('[等]', ''),
     publisher: removeStr(book.publisher),
     // pubdate: new Date(parseInt(year), parseInt(month) - 1),
     pubdate: `${year}-${month}-01 08:00:00`,
+    // pubdate: `${year}-${month}-01 00:00:00`,
     description: removeStr(book.abstract),
+    mediaType: ['1'],
   };
   if (/.*著$/.test(bookInfo.author)) {
     bookInfo.author = bookInfo.author.slice(0, -1);
   }
   // console.log(bookInfo);
-  
-  post('/book', bookInfo).then(res => {
+
+  post('/book', bookInfo).then((res) => {
     ElMessage({
       type: 'success',
-      message: `${bookInfo.name} 添加成功`
-    })
-  })
+      message: `${bookInfo.name} 添加成功`,
+    });
+  });
 }
 </script>
 

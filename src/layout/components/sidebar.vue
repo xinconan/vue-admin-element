@@ -83,8 +83,13 @@ const permissions = ref<IMenu[]>([
     children: [
       {
         path: '/form/form1',
-        title: 'form1',
+        title: '悦读',
         icon: 'Document',
+      },
+      {
+        path: '/form/library',
+        title: '私人图书馆',
+        icon: 'Reading',
       },
       {
         path: '/form/tax',

@@ -11,7 +11,7 @@ const req = axios.create({
 req.interceptors.response.use(
   (res: AxiosResponse) => {
     if (res.status >= 200 && res.status < 300) {
-      return res.data;
+      return res.data.data;
     }
 
     return Promise.reject(res);

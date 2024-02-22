@@ -37,6 +37,12 @@ export const routes: RouteRecordRaw[] = [
         meta: {},
       },
       {
+        name: 'library',
+        path: 'library',
+        component: () => import('@/views/form/library.vue'),
+        meta: { title: '私人图书馆' },
+      },
+      {
         name: 'tax',
         path: 'tax',
         component: () => import('@/views/form/tax.vue'),

@@ -1,3 +1,5 @@
+import { TagProps } from 'element-plus';
+
 export const libraries = [
   {
     id: 'cxstar',
@@ -119,6 +121,66 @@ export const libraries = [
     pinst: '1cdf84cb0001fc0bce',
     ifbg: 1,
   },
+  {
+    id: 'jxlib',
+    name: '江西图书馆(少)',
+    pinst: '1d266a4a0001850bce',
+    ifbg: 1,
+  },
+  {
+    id: 'sxlib',
+    name: '陕西图书馆-',
+    pinst: '1d8997890000020bce',
+    ifbg: 1,
+  },
+  {
+    id: 'cslg',
+    name: '长沙理工大学-',
+    pinst: '2sENzjWxEt85eV17leJ',
+    ifbg: 1,
+  },
+  {
+    id: 'ustc',
+    name: '中国科学技术大学-',
+    pinst: '1cfb547e0000060bce',
+    ifbg: 1,
+  },
+  {
+    id: 'kust',
+    name: '昆明理工大学-',
+    pinst: '1cd122b80000f50bce',
+    ifbg: 1,
+  },
+  {
+    id: 'bupt',
+    name: '北京邮电大学-',
+    pinst: '1cf1ad660000990bce',
+    ifbg: 1,
+  },
+  {
+    id: 'xjtu',
+    name: '西安交通大学-',
+    pinst: '1faa20210003ec0bce',
+    ifbg: 1,
+  },
+  {
+    id: 'cdut',
+    name: '成都理工大学-',
+    pinst: '25f933c3000bd6XXXX',
+    ifbg: 1,
+  },
+  {
+    id: 'xmu',
+    name: '厦门大学-',
+    pinst: 'lsopDkWreWLiOkMFE5r',
+    ifbg: 1,
+  },
+  {
+    id: 'fddx',
+    name: '复旦大学-',
+    pinst: '08zbgCmsLlRsQT8qGlX',
+    ifbg: 1,
+  },
 ];
 
 export const PUBLISHERS = [
@@ -149,3 +211,27 @@ export const PUBDATES = [
   '2011',
   '2010',
 ];
+
+interface IMedia {
+  label: 'pdf' | 'epub',
+  value: string;
+  tagType: TagProps["type"]
+}
+
+export const MEDIA_TYPE: IMedia[] = [
+  {
+    label: 'pdf',
+    value: '1',
+    tagType: 'danger',
+  },
+  {
+    label: 'epub',
+    value: '2',
+    tagType: 'success',
+  },
+];
+
+export const MEDIA_TYPE_MAP: Record<string, IMedia> = {};
+MEDIA_TYPE.map((item) => {
+  MEDIA_TYPE_MAP[item.value] = item;
+});

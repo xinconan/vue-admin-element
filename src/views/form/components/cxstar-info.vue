@@ -124,8 +124,8 @@ watchEffect(() => {
     .then((res) => {
       total.value = res.total;
       books.value = res.data;
-      const dates = {};
-      const pubdate = [];
+      const dates = {} as Record<string, number>;
+      const pubdate: string[] = [];
       for (const [k, v] of Object.entries(res.pubdate)) {
         dates[k.trim()] = v;
         pubdate.push(k.trim());

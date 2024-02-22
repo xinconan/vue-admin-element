@@ -9,9 +9,21 @@ export interface ICxBook {
   abstract: string;
 }
 
+export interface IBook {
+  id: number;
+  name: string;
+  author: string;
+  isbn: string;
+  pubdate: string;
+  publisher: string;
+  cover: string;
+  description: string;
+  mediaType: number[];
+}
+
 export interface ICxRes{
   total: number;
   data: ICxBook[];
-  publishers: object;
-  pubdate: object;
+  publishers: Record<string, number>;
+  pubdate: Record<string, number>;
 }

@@ -100,7 +100,7 @@ import cxstarItem from './components/cxstar-item.vue';
 import { ref, watch } from 'vue';
 import { get } from '@/utils/request';
 import { ICxRes, ICxBook } from '@/types/book';
-import { libraries } from '@/utils/const';
+import { libraries, PUBLISHERS } from '@/utils/const';
 
 const pinst = ref('2050351c000001XXXX');
 const ifbg = ref(1);
@@ -152,6 +152,14 @@ function search() {
     .then((res) => {
       total.value = res.total;
       books.value = res.data;
+      const pub = Object.keys(res.publishers);
+
+      PUBLISHERS.forEach((item) => {
+        // 几个常用的出版社，如果不在返回结果里，手动加上，方便快速搜索
+        if (!pub.includes(item)) {
+          res.publishers[item] = 0;
+        }
+      });
       publishers.value = res.publishers;
       pubdates.value = res.pubdate;
     })
