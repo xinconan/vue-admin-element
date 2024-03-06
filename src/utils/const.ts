@@ -128,9 +128,21 @@ export const libraries = [
     ifbg: 1,
   },
   {
+    id: 'zjlib',
+    name: '浙江图书馆(少)',
+    pinst: 'ZAfibAcsEhmT8WYcuHV',
+    ifbg: 1,
+  },
+  {
     id: 'sxlib',
     name: '陕西图书馆-',
     pinst: '1d8997890000020bce',
+    ifbg: 1,
+  },
+  {
+    id: 'ahlib',
+    name: '安徽图书馆-',
+    pinst: 'cAxyC0YdFjao4V43kdH',
     ifbg: 1,
   },
   {
@@ -164,9 +176,45 @@ export const libraries = [
     ifbg: 1,
   },
   {
+    id: 'xust',
+    name: '西安科技大学-',
+    pinst: '1f751a410001220bce',
+    ifbg: 1,
+  },
+  {
+    id: 'usts',
+    name: '苏州科技大学-',
+    pinst: '20dabaa8000001XXXX',
+    ifbg: 1,
+  },
+  {
+    id: 'yangze',
+    name: '长江大学-',
+    pinst: '20b6b9cd000001XXXX',
+    ifbg: 1,
+  },
+  {
+    id: 'hainan',
+    name: '海南大学-',
+    pinst: '11a0581024560',
+    ifbg: 1,
+  },
+  {
+    id: 'bbgu',
+    name: '北部湾大学-',
+    pinst: '1cbff3e10000ca0bce',
+    ifbg: 1,
+  },
+  {
+    id: 'hbwe',
+    name: '河北水利电力学院-',
+    pinst: '2153d8cf000001XXXX',
+    ifbg: 1,
+  },
+  {
     id: 'cdut',
     name: '成都理工大学-',
-    pinst: '25f933c3000bd6XXXX',
+    pinst: '1dabea8c0000010bce',
     ifbg: 1,
   },
   {
@@ -181,6 +229,30 @@ export const libraries = [
     pinst: '08zbgCmsLlRsQT8qGlX',
     ifbg: 1,
   },
+  {
+    id: 'gznc',
+    name: '贵州师范-',
+    pinst: 'db6AXkpuVIlbAY0glIu',
+    ifbg: 1,
+  },
+  {
+    id: 'bnu',
+    name: '北京师范-',
+    pinst: '11fb2fd04c6f0',
+    ifbg: 1,
+  },
+  {
+    id: 'gdupt',
+    name: '广东石油化工学院-',
+    pinst: '1cfedc030000220bce',
+    ifbg: 1,
+  },
+  {
+    id: 'hdu',
+    name: '杭州电子科技-',
+    pinst: '1df18a8a0006830bce',
+    ifbg: 1,
+  },
 ];
 
 export const PUBLISHERS = [
@@ -192,7 +264,9 @@ export const PUBLISHERS = [
   '中国人民大学出版社',
   '清华大学出版社',
   '浙江大学出版社',
+  '中译出版社',
   '长江文艺出版社',
+  '社会科学文献出版社',
 ];
 
 export const PUBDATES = [

@@ -73,6 +73,12 @@ export const routes: RouteRecordRaw[] = [
         meta: { title: '畅想之星搜索' },
       },
       {
+        name: 'chineseall',
+        path: 'chineseall',
+        component: () => import('@/views/form/chineseall.vue'),
+        meta: { title: '书香中国搜索' },
+      },
+      {
         name: 'imgPreview',
         path: 'imgPreview',
         component: () => import('@/views/form/imgPreview.vue'),

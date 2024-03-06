@@ -18,7 +18,7 @@ export interface IBook {
   publisher: string;
   cover: string;
   description: string;
-  mediaType: number[];
+  mediaType: string[];
 }
 
 export interface ICxRes{

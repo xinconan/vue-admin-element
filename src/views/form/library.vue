@@ -1,15 +1,23 @@
 <template>
   <div class="flex flex-col h-full" v-loading="loading">
-    <div class="flex mb-4">
+    <div class="flex items-center mb-4">
       <el-input
         class="ml-4 mr-4"
         style="width: 300px"
         placeholder="输入关键词搜索"
         v-model="keyword"
+        clearable
         @keyup.enter="doSearch"
       />
-      <el-button type="primary" @click="doSearch" class="mr-4">搜索</el-button>
-      <el-button type="primary" @click="getBookList">刷新</el-button>
+      <el-button type="primary" size="small" @click="doSearch">
+        搜索
+      </el-button>
+      <el-button type="primary" size="small" @click="getBookList">
+        刷新
+      </el-button>
+      <el-button type="primary" size="small" @click="showAdd">
+        添加图书
+      </el-button>
     </div>
     <section class="content">
       <div class="h-full overflow-auto" ref="bookRef">
@@ -34,7 +42,7 @@
       />
     </div>
   </div>
-  <el-dialog v-model="dialogVisible" title="编辑">
+  <el-dialog v-model="dialogVisible" :title="form.id <= 0 ? '新增' : '编辑'">
     <el-form
       :model="form"
       ref="formRef"
@@ -61,7 +69,12 @@
         <el-input v-model="form.cover" autocomplete="off" />
       </el-form-item>
       <el-form-item label="资源类型" prop="mediaType">
-        <el-select v-model="form.mediaType" multiple style="width:100%;" placeholder="请选择">
+        <el-select
+          v-model="form.mediaType"
+          multiple
+          style="width: 100%"
+          placeholder="请选择"
+        >
           <el-option
             v-for="type in MEDIA_TYPE"
             :key="type.value"
@@ -143,12 +156,25 @@ const form = reactive({
   pubdate: '',
   author: '',
   description: '',
-  mediaType: [1],
+  mediaType: ['1'],
 });
 
 function doSearch() {
   page.value = 1;
   getBookList();
+}
+
+function showAdd() {
+  form.id = 0;
+  form.mediaType = ['1'];
+  form.name = '';
+  form.author = '';
+  form.cover = '';
+  form.isbn = '';
+  form.description = '';
+  form.pubdate = '';
+  form.publisher = '';
+  dialogVisible.value = true;
 }
 
 function onEdit(book: IBook) {
@@ -185,16 +211,17 @@ function onSubmit(formEl: FormInstance | undefined) {
       const params = {
         ...form,
       };
-      // if (params.pubdate) {
-      //   params.pubdate += ' 08:00:00'
-      // }
-      post(`/book/${form.id}`, params)
+      let url = `/book/${form.id}`;
+      if (params.id <= 0) {
+        url = '/book';
+      }
+      post(url, params)
         .then(() => {
           dialogVisible.value = false;
           formEl.resetFields();
           ElMessage({
             type: 'success',
-            message: `修改成功`,
+            message: params.id <= 0 ? '新增成功' : `修改成功`,
           });
           getBookList();
         })

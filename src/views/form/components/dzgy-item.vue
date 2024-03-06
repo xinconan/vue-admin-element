@@ -25,6 +25,20 @@
       </div>
       <div class="line-clamp-2">{{ book.abstract }}</div>
       <div>
+        <a
+          :href="`https://yd.51zhy.cn/ebook/web/newBook/queryNewBookById?id=${book.ruid}&address=newBook`"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
+          51zhy
+        </a>
+        <a
+          :href="`http://sso.zslib.cn/interlibSSO/goto/129/+xc940ygx9bm//ebook/web/newBook/queryNewBookById?id=${book.ruid}&address=newBook`"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
+          中山图书馆
+        </a>
         <el-button @click="addBook" type="primary" size="small">添加到图书馆</el-button>
       </div>
     </div>

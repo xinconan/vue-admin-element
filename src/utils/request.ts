@@ -18,13 +18,15 @@ req.interceptors.response.use(
   },
   (err) => {
     console.log('err: ', err);
-
-    if (err.message) {
-      ElMessage({
-        message: err.message,
-        type: 'error',
-      });
+    let msg = err.message;
+    if (err.response?.data?.message) {
+      msg = err.response.data.message;
     }
+
+    ElMessage({
+      message: msg,
+      type: 'error',
+    });
     return Promise.reject(err);
   }
 );

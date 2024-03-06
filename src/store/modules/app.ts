@@ -10,11 +10,13 @@ export const useAppStore = defineStore('app', {
         name: '',
         avatar: '',
       },
+      // 书香中国token
+      chineseToken: '',
     };
   },
   // 本地持久化
   persist: {
-    paths: ['user'],
+    paths: ['user', 'chineseToken'],
   },
   getters: {
     getCollapse(): boolean {
@@ -39,6 +41,9 @@ export const useAppStore = defineStore('app', {
       this.user.token = token;
       // prettier-ignore
       this.user.avatar = 'https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png';
+    },
+    setChineseToken(token: string) {
+      this.chineseToken = token;
     },
     logout() {
       this.user.name = '';

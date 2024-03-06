@@ -128,6 +128,9 @@ function addBook() {
     description: removeStr(book.abstract),
     mediaType: ['1'],
   };
+  if (['人民卫生出版社', '中译出版社', '北京大学出版社'].includes(bookInfo.publisher)) {
+    bookInfo.mediaType = ['2'];
+  }
   if (/.*著$/.test(bookInfo.author)) {
     bookInfo.author = bookInfo.author.slice(0, -1);
   }

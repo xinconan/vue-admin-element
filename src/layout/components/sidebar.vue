@@ -117,6 +117,11 @@ const permissions = ref<IMenu[]>([
         icon: 'Search',
       },
       {
+        path: '/form/chineseall',
+        title: '书香中国搜索',
+        icon: 'Search',
+      },
+      {
         path: '/form/imgPreview',
         title: '图片预览',
         icon: 'Picture',

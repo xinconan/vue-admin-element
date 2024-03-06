@@ -2,7 +2,7 @@
   <div class="cxstar-item flex">
     <img :src="book.cover" :alt="book.name" />
     <div class="w-full ml-4">
-      <div class="flex">
+      <div class="flex items-center">
         <h3 v-html="book.name"></h3>
         <el-tag
           class="ml-4"
@@ -11,6 +11,7 @@
           :key="media"
           :type="MEDIA_TYPE_MAP[media].tagType"
           effect="dark"
+          size="small"
         >
           {{ MEDIA_TYPE_MAP[media].label }}
         </el-tag>

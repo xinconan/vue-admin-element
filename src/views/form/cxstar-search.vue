@@ -1,13 +1,15 @@
 <template>
-  <div class="flex mb-4">
-    <el-select v-model="pinst" @change="onChange">
-      <el-option
+  <div class="flex items-center mb-4">
+    <div class="w-60">
+      <el-select v-model="pinst" @change="onChange">
+        <el-option
         v-for="lib in libraries"
         :key="lib.pinst"
         :label="lib.name"
         :value="lib.pinst"
-      />
-    </el-select>
+        />
+      </el-select>
+    </div>
     <el-input
       class="ml-4 mr-4"
       style="width: 300px"
