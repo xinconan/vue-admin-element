@@ -2,8 +2,9 @@
   <div class="cxstar-item flex">
     <img :src="book.imgUrl" :alt="book.title" />
     <div class="w-full ml-4">
-      <div class="flex">
+      <div class="flex items-center">
         <h3 v-html="book.title"></h3>
+        <el-icon @click="copy(book.title)" class="cursor-pointer ml-3"><CopyDocument /></el-icon>
       </div>
       <div class="flex mt-4">
         <div class="flex-1">
@@ -39,6 +40,13 @@
         >
           中山图书馆
         </a>
+        <a
+          :href="`http://sso.zslib.cn/interlibSSO/goto/129/+xc940ygx9bm/ebook/reader/index.html#/pdfReader?id=${book.ruid}`"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
+          中山阅读页
+        </a>
         <el-button @click="addBook" type="primary" size="small">添加到图书馆</el-button>
       </div>
     </div>
@@ -46,9 +54,13 @@
 </template>
 
 <script lang="ts" setup>
+import { watch } from 'vue'
+import { useClipboard } from '@vueuse/core';
 import { ICxBook } from '../../../../types/book';
 import { post } from '../../../utils/request';
 import { ElMessage } from 'element-plus';
+
+const { copy, copied } = useClipboard();
 
 const props = defineProps<{
   book: ICxBook;
@@ -61,6 +73,12 @@ function getAuthor(author: string) {
 function removeStr(str: string) {
   return str.replace(/<\/?em>/g, '')
 }
+
+watch(copied, (copied) => {
+  if (copied) {
+    ElMessage.success('复制成功')
+  }
+})
 
 function addBook() {
   const book = props.book;

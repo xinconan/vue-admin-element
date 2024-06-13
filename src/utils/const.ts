@@ -134,6 +134,12 @@ export const libraries = [
     ifbg: 1,
   },
   {
+    id: 'ntulib',
+    name: '南通大学',
+    pinst: '1d943b5b0000430bce',
+    ifbg: 1,
+  },
+  {
     id: 'sxlib',
     name: '陕西图书馆-',
     pinst: '1d8997890000020bce',

@@ -29,6 +29,7 @@
               />
               <div>
                 <span>{{ book.name }}</span>
+                <el-button @click="addBook(book)" type="primary" size="small">添加到图书馆</el-button>
               </div>
             </el-card>
           </el-col>
@@ -49,12 +50,16 @@
 <script lang="ts" setup>
 import { useClipboard } from '@vueuse/core';
 import { ref, watchEffect } from 'vue';
-import { get } from '../../utils/request';
+import { get, post } from '../../utils/request';
+import { ElMessage } from 'element-plus';
 
 interface IBook {
   name: string;
   id: string;
   logo: string;
+  authors: string;
+  isbn: string;
+  publishDate: string;
 }
 
 interface IEpubRes {
@@ -65,13 +70,35 @@ interface IEpubRes {
 }
 
 const loading = ref(true);
-const type = ref(1);
+const type = ref(2);
 const page = ref(1);
 const total = ref(0);
 const list = ref<IBook[]>([]);
 const bookRef = ref();
 
 const { copy } = useClipboard();
+
+function addBook(book: IBook) {
+  const bookInfo = {
+    name: book.name,
+    cover: book.logo,
+    isbn: book.isbn.replaceAll('-', ''),
+    author: book.authors,
+    publisher: '人民邮电出版社',
+    // pubdate: new Date(parseInt(year), parseInt(month) - 1),
+    pubdate: book.publishDate.substring(0, 10) + ` 08:00:00`,
+    description: '',
+    mediaType: ['1'],
+  };
+  
+  
+  post('/book', bookInfo).then(res => {
+    ElMessage({
+      type: 'success',
+      message: `${bookInfo.name} 添加成功`
+    })
+  })
+}
 
 function getBookList() {
   loading.value = true;

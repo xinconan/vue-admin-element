@@ -57,6 +57,7 @@
         >
           上架时间
         </div>
+        <el-button type="primary" size="small" @click="getBookList">刷新</el-button>
       </div>
       <div class="flex-1 overflow-auto">
         <cxstar-item
@@ -79,7 +80,7 @@
 
 <script lang="ts" setup>
 import cxstarItem from './cxstar-item.vue';
-import { ref, watchEffect } from 'vue';
+import { ref, watch } from 'vue';
 import { get } from '../../../utils/request';
 import { ICxRes, ICxBook } from '../../../../types/book';
 import { PUBLISHERS, PUBDATES } from '../../../utils/const';
@@ -102,18 +103,21 @@ const total = ref(0);
 function setFilter(field: string) {
   sortField.value = field;
   page.value = 1;
+  getBookList();
 }
 
 function setPublisher(pub: string) {
   publisher.value = pub;
   page.value = 1;
+  getBookList();
 }
 function setPubdate(date: string) {
   pubdate.value = date;
   page.value = 1;
+  getBookList();
 }
 
-watchEffect(() => {
+function getBookList() {
   if (!props.pinst) {
     return;
   }
@@ -150,7 +154,15 @@ watchEffect(() => {
     .finally(() => {
       loading.value = false;
     });
-});
+}
+
+watch(
+  page,
+  () => {
+    getBookList();
+  },
+  { immediate: true }
+);
 </script>
 
 <style lang="scss" scoped>

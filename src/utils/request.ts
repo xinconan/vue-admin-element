@@ -2,7 +2,7 @@ import axios, { AxiosResponse } from 'axios';
 import { ElMessage } from 'element-plus';
 const req = axios.create({
   withCredentials: true,
-  timeout: 10000,
+  timeout: 30000,
   baseURL: import.meta.env.PROD
     ? 'https://x-nest.vercel.app'
     : 'http://127.0.0.1:3001',

@@ -42,6 +42,7 @@ declare module '@vue/runtime-core' {
     ElTabPane: typeof import('element-plus/es')['ElTabPane']
     ElTabs: typeof import('element-plus/es')['ElTabs']
     ElTag: typeof import('element-plus/es')['ElTag']
+    ElTimePicker: typeof import('element-plus/es')['ElTimePicker']
     ElUpload: typeof import('element-plus/es')['ElUpload']
     ExitFullScreen: typeof import('./src/components/icon/exit-full-screen.vue')['default']
     NotFound: typeof import('./src/components/icon/not-found.vue')['default']
