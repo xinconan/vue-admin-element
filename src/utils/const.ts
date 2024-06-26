@@ -276,6 +276,7 @@ export const PUBLISHERS = [
 ];
 
 export const PUBDATES = [
+  '2024',
   '2023',
   '2022',
   '2021',
@@ -293,9 +294,9 @@ export const PUBDATES = [
 ];
 
 interface IMedia {
-  label: 'pdf' | 'epub',
+  label: 'pdf' | 'epub';
   value: string;
-  tagType: TagProps["type"]
+  tagType: TagProps['type'];
 }
 
 export const MEDIA_TYPE: IMedia[] = [
@@ -315,3 +316,99 @@ export const MEDIA_TYPE_MAP: Record<string, IMedia> = {};
 MEDIA_TYPE.map((item) => {
   MEDIA_TYPE_MAP[item.value] = item;
 });
+
+export const CATEGORY = [
+  {
+    id: 'A',
+    name: '马克思主义、列宁主义、毛泽东思想、邓小平理论',
+  },
+  {
+    id: 'B',
+    name: '哲学、宗教',
+  },
+  {
+    id: 'C',
+    name: '社会科学总论',
+  },
+  {
+    id: 'D',
+    name: '政治、法律',
+  },
+  {
+    id: 'E',
+    name: '军事',
+  },
+  {
+    id: 'F',
+    name: '经济',
+  },
+  {
+    id: 'G',
+    name: '文化、科学、教育、体育',
+  },
+  {
+    id: 'H',
+    name: '语言、文字',
+  },
+  {
+    id: 'I',
+    name: '文学',
+  },
+  {
+    id: 'J',
+    name: '艺术',
+  },
+  {
+    id: 'K',
+    name: '历史、地理',
+  },
+  {
+    id: 'N',
+    name: '自然科学总论',
+  },
+  {
+    id: 'O',
+    name: '数理科学和化学',
+  },
+  {
+    id: 'P',
+    name: '天文学、地球科学',
+  },
+  {
+    id: 'Q',
+    name: '生物科学',
+  },
+  {
+    id: 'R',
+    name: '医药、卫生',
+  },
+  {
+    id: 'S',
+    name: '农业科学',
+  },
+  {
+    id: 'T',
+    name: '工业技术',
+  },
+  {
+    id: 'U',
+    name: '交通运输',
+  },
+  {
+    id: 'V',
+    name: '航空、航天',
+  },
+  {
+    id: 'X',
+    name: '环境科学、安全科学',
+  },
+  {
+    id: 'Z',
+    name: '综合性图书',
+  },
+];
+
+export const CAREGORY_MAP: Record<string, string> = {}
+for (const item of CATEGORY) {
+  CAREGORY_MAP[item.id] = item.name
+}

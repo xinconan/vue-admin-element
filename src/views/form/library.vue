@@ -59,6 +59,9 @@
       <el-form-item label="作者" prop="author">
         <el-input v-model="form.author" autocomplete="off" />
       </el-form-item>
+      <el-form-item label="译者" prop="translator">
+        <el-input v-model="form.translator" autocomplete="off" />
+      </el-form-item>
       <el-form-item label="出版社" prop="publisher">
         <el-input v-model="form.publisher" autocomplete="off" />
       </el-form-item>
@@ -80,6 +83,20 @@
             :key="type.value"
             :value="type.value"
             :label="type.label"
+          />
+        </el-select>
+      </el-form-item>
+      <el-form-item label="图书分类" prop="categoryId">
+        <el-select
+          v-model="form.categoryId"
+          style="width: 100%"
+          placeholder="请选择"
+        >
+          <el-option
+            v-for="type in CATEGORY"
+            :key="type.id"
+            :value="type.id"
+            :label="`${type.id}:${type.name}`"
           />
         </el-select>
       </el-form-item>
@@ -112,7 +129,7 @@ import BookItem from './components/book-item.vue';
 import { IBook } from '@/types/book';
 import type { FormRules, FormInstance } from 'element-plus';
 import { ElMessage } from 'element-plus';
-import { MEDIA_TYPE } from '@/utils/const';
+import { MEDIA_TYPE, CATEGORY } from '@/utils/const';
 
 interface IBookRes {
   data: IBook[];
@@ -155,7 +172,9 @@ const form = reactive({
   publisher: '',
   pubdate: '',
   author: '',
+  translator: '',
   description: '',
+  categoryId: '',
   mediaType: ['1'],
 });
 
@@ -181,6 +200,7 @@ function onEdit(book: IBook) {
   console.log(book);
   form.name = book.name;
   form.author = book.author;
+  form.translator = book.translator;
   form.cover = book.cover;
   form.isbn = book.isbn;
   form.description = book.description;
@@ -188,6 +208,7 @@ function onEdit(book: IBook) {
   form.publisher = book.publisher;
   form.id = book.id;
   form.mediaType = book.mediaType;
+  form.categoryId = book.categoryId || '';
   dialogVisible.value = true;
 }
 

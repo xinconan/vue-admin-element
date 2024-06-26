@@ -13,11 +13,13 @@ export interface IBook {
   id: number;
   name: string;
   author: string;
+  translator: string;
   isbn: string;
   pubdate: string;
   publisher: string;
   cover: string;
   description: string;
+  categoryId?: string;
   mediaType: string[];
 }
 

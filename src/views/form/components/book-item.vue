@@ -15,6 +15,15 @@
         >
           {{ MEDIA_TYPE_MAP[media].label }}
         </el-tag>
+        <el-tag
+          class="ml-4"
+          v-if="book.categoryId"
+          type="warning"
+          effect="dark"
+          size="small"
+        >
+          {{ book.categoryId + ':' + CAREGORY_MAP[book.categoryId] }}
+        </el-tag>
         <div class="ml-auto mr-5">
           <slot name="head" :book="book"></slot>
         </div>
@@ -44,7 +53,7 @@
 
 <script lang="ts" setup>
 import { IBook } from '../../../../types/book';
-import { MEDIA_TYPE_MAP } from '@/utils/const';
+import { CAREGORY_MAP, MEDIA_TYPE_MAP } from '@/utils/const';
 import { ElMessage } from 'element-plus';
 
 const props = defineProps<{
