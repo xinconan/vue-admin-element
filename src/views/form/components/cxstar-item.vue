@@ -96,6 +96,13 @@
         >
           江西
         </a>
+        <a
+          :href="`https://interlibsso.hilib.com:8787/interlibSSO/goto/131/++9bwrs-q9bnl/Book/Detail?ruid=${book.ruid}&packageruid=`"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
+          海南
+        </a>
         <el-button @click="addBook" type="primary" size="small">
           添加到图书馆
         </el-button>

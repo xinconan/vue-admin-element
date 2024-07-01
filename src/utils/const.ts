@@ -273,6 +273,7 @@ export const PUBLISHERS = [
   '中译出版社',
   '长江文艺出版社',
   '社会科学文献出版社',
+  '广东人民出版社',
 ];
 
 export const PUBDATES = [
