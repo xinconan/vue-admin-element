@@ -15,6 +15,7 @@
       style="width: 300px"
       placeholder="输入关键词搜索"
       v-model="keyword"
+      clearable
       @keyup.enter="doSearch"
     />
     <el-button type="primary" @click="search">搜索</el-button>

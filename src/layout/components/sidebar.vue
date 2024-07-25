@@ -1,5 +1,5 @@
 <template>
-  <el-aside :class="{ collapse: collapse, 'sidebar-container': true }">
+  <el-aside :class="{ 'collapsed': collapse, 'sidebar-container': true }">
     <div class="logo-wrap flex items-center justify-center">
       <img
         :class="{ 'mr-4': !collapse }"
@@ -213,7 +213,7 @@ const menuActive = computed<string>(() => {
   flex-direction: column;
   box-shadow: 2px 0 8px 0 rgba(29, 35, 41, 0.05);
 
-  &.collapse {
+  &.collapsed {
     width: 64px;
   }
 

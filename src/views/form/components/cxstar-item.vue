@@ -4,6 +4,9 @@
     <div class="w-full ml-4">
       <div class="flex">
         <h3 v-html="book.title"></h3>
+        <el-icon @click="doCopy(book.title)" class="cursor-pointer ml-3"
+          ><CopyDocument
+        /></el-icon>
         <span class="ml-auto">{{ book.ruid }}</span>
       </div>
       <div class="flex mt-4">
@@ -112,17 +115,31 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive, ref } from 'vue';
+import { reactive, ref, watch } from 'vue';
 import { ICxBook } from '../../../../types/book';
 import { post } from '../../../utils/request';
 import { ElMessage } from 'element-plus';
+import { useClipboard } from '@vueuse/core';
+
+const { copy, copied } = useClipboard();
 
 const props = defineProps<{
   book: ICxBook;
 }>();
 
+watch(copied, (copied) => {
+  if (copied) {
+    ElMessage.success('复制成功');
+  }
+});
+
 function getAuthor(author: string) {
   return author.replaceAll('<a>', '').replaceAll('</a>', '');
+}
+
+function doCopy(str: string) {
+  str = removeStr(str);
+  copy(str);
 }
 
 function removeStr(str: string) {
@@ -149,7 +166,11 @@ function addBook() {
     description: removeStr(book.abstract),
     mediaType: ['1'],
   };
-  if (['人民卫生出版社', '中译出版社', '北京大学出版社'].includes(bookInfo.publisher)) {
+  if (
+    ['人民卫生出版社', '中译出版社', '北京大学出版社'].includes(
+      bookInfo.publisher
+    )
+  ) {
     bookInfo.mediaType = ['2'];
   }
   if (/.*著$/.test(bookInfo.author)) {

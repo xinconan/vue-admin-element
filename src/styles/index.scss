@@ -41,81 +41,17 @@ body {
 }
 
 a {
+  color: var(--el-color-primary);
   text-decoration: none;
+
+  &:hover, &:focus, &:visited {
+    color: var(--el-color-primary-light-3);
+  }
 }
 
 // 部分类名参考 tailwind 命名
-// flex
-.flex {
-  display: flex;
-}
-.flex-col {
-  flex-direction: column;
-}
-.flex-1 {
-  flex: 1 1 0%;
-}
-.items-center {
-  align-items: center;
-}
 .justify-center {
   justify-content: center;
-}
-
-// margin
-.mr-3 {
-  margin-right: 12px;
-}
-.mr-4 {
-  margin-right: 16px;
-}
-.mr-5 {
-  margin-right: 20px;
-}
-.ml-auto {
-  margin-left: auto;
-}
-.ml-3 {
-  margin-left: 12px;
-}
-.ml-4 {
-  margin-left: 16px;
-}
-.mt-3 {
-  margin-top: 12px;
-}
-.mt-4 {
-  margin-top: 16px;
-}
-.mt-5 {
-  margin-top: 20px;
-}
-.mb-4 {
-  margin-bottom: 16px;
-}
-
-// width
-.w-full {
-  width: 100%;
-}
-.w-60 {
-  width: 15rem;
-}
-.h-full {
-  height: 100%;
-}
-
-.overflow-auto {
-  overflow: auto;
-}
-
-.overflow-hidden {
-  overflow: hidden;
-}
-
-// cursor
-.cursor-pointer {
-  cursor: pointer;
 }
 
 // line-clamp

@@ -4,6 +4,9 @@
     <div class="w-full ml-4">
       <div class="flex items-center">
         <h3 v-html="book.name"></h3>
+        <el-icon @click="copy(book.name)" class="cursor-pointer ml-3"
+          ><CopyDocument
+        /></el-icon>
         <el-tag
           class="ml-4"
           v-if="book.mediaType?.length"
@@ -54,7 +57,17 @@
 <script lang="ts" setup>
 import { IBook } from '../../../../types/book';
 import { CAREGORY_MAP, MEDIA_TYPE_MAP } from '@/utils/const';
+import { useClipboard } from '@vueuse/core';
 import { ElMessage } from 'element-plus';
+import { watch } from 'vue';
+
+const { copy, copied } = useClipboard();
+
+watch(copied, (copied) => {
+  if (copied) {
+    ElMessage.success('复制成功');
+  }
+});
 
 const props = defineProps<{
   book: IBook;

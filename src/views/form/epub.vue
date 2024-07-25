@@ -28,7 +28,7 @@
                 :src="book.logo"
               />
               <div>
-                <span>{{ book.name }}</span>
+                <span>{{ book.name }} {{ book.publishDate }}</span>
                 <el-button @click="addBook(book)" type="primary" size="small">添加到图书馆</el-button>
               </div>
             </el-card>
@@ -86,7 +86,7 @@ function addBook(book: IBook) {
     author: book.authors,
     publisher: '人民邮电出版社',
     // pubdate: new Date(parseInt(year), parseInt(month) - 1),
-    pubdate: book.publishDate.substring(0, 10) + ` 08:00:00`,
+    pubdate: book.publishDate + ` 08:00:00`,
     description: '',
     mediaType: ['1'],
   };
@@ -106,6 +106,7 @@ function getBookList() {
     .then(({ data }) => {
       console.log(data);
       total.value = data.total;
+      data.records.forEach(item => item.publishDate = item.publishDate.substring(0, 10))
       list.value = data.records;
     })
     .finally(() => {

@@ -9,6 +9,14 @@
         clearable
         @keyup.enter="doSearch"
       />
+      <el-checkbox-group v-model="type" class="mr-4">
+        <el-checkbox
+          v-for="media in MEDIA_TYPE"
+          :key="media.value"
+          :label="media.label"
+          :value="media.value"
+        />
+      </el-checkbox-group>
       <el-button type="primary" size="small" @click="doSearch">
         搜索
       </el-button>
@@ -42,7 +50,11 @@
       />
     </div>
   </div>
-  <el-dialog v-model="dialogVisible" :title="form.id <= 0 ? '新增' : '编辑'">
+  <el-dialog
+    v-model="dialogVisible"
+    :title="form.id <= 0 ? '新增' : '编辑'"
+    :close-on-click-modal="false"
+  >
     <el-form
       :model="form"
       ref="formRef"
@@ -142,6 +154,7 @@ const page = ref(1);
 const total = ref(0);
 const list = ref<IBook[]>([]);
 const keyword = ref(''); // 搜索关键字
+const type = ref([]); // 资源类型
 const bookRef = ref();
 const dialogVisible = ref(false);
 const formRef = ref<FormInstance>();
@@ -214,7 +227,7 @@ function onEdit(book: IBook) {
 
 function getBookList() {
   loading.value = true;
-  get<IBookRes>(`/book?page=${page.value}&name=${keyword.value}`)
+  get<IBookRes>(`/book?page=${page.value}&name=${keyword.value}&type=${type.value.toString()}`)
     .then((data) => {
       total.value = data.total;
       list.value = data.data;
