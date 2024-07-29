@@ -5,6 +5,11 @@
         <el-radio :value="1">文字</el-radio>
         <el-radio :value="2">图文</el-radio>
       </el-radio-group>
+      <label class="ml-4">资源类型：</label>
+      <el-radio-group @change="doSearch" v-model="edition">
+        <el-radio :value="1">电子书</el-radio>
+        <el-radio :value="2">纸质</el-radio>
+      </el-radio-group>
     </div>
     <section class="content">
       <div class="h-full overflow-auto" ref="bookRef">
@@ -73,6 +78,7 @@ const loading = ref(true);
 const type = ref(2);
 const page = ref(1);
 const total = ref(0);
+const edition = ref(1);
 const list = ref<IBook[]>([]);
 const bookRef = ref();
 
@@ -102,7 +108,7 @@ function addBook(book: IBook) {
 
 function getBookList() {
   loading.value = true;
-  get<IEpubRes>(`/epub/ebook?page=${page.value}`)
+  get<IEpubRes>(`/epub/ebook?page=${page.value}&edition=${edition.value}`)
     .then(({ data }) => {
       console.log(data);
       total.value = data.total;
@@ -117,6 +123,11 @@ function getBookList() {
 watchEffect(async () => {
   getBookList();
 });
+
+function doSearch() {
+  page.value = 1;
+  getBookList();
+}
 
 // function doCopy() {
 //   const content = bookRef.value?.textContent;
