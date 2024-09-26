@@ -50,6 +50,7 @@
         </div>
       </div>
       <div class="line-clamp-2">{{ book.description }}</div>
+      <div><slot name="footer" :book="book"></slot></div>
     </div>
   </div>
 </template>

@@ -26,6 +26,9 @@
       <el-button type="primary" size="small" @click="showAdd">
         添加图书
       </el-button>
+      <el-button type="primary" size="small" @click="showKz">
+        从可知添加
+      </el-button>
     </div>
     <section class="content">
       <div class="h-full overflow-auto" ref="bookRef">
@@ -54,6 +57,7 @@
     v-model="dialogVisible"
     :title="form.id <= 0 ? '新增' : '编辑'"
     :close-on-click-modal="false"
+    align-center
   >
     <el-form
       :model="form"
@@ -132,6 +136,25 @@
       </div>
     </template>
   </el-dialog>
+  <el-dialog
+    v-model="dialogKzVisible"
+    title="输入可知响应数据"
+    :close-on-click-modal="false"
+    align-center
+  >
+    <el-input type="textarea" v-model="kzStr" :rows="10"></el-input>
+    <template #footer>
+      <div>
+        <el-button class="mr-4" @click="dialogKzVisible = false">取消</el-button>
+        <el-button
+          type="primary"
+          @click="parseKz"
+        >
+          确定
+        </el-button>
+      </div>
+    </template>
+  </el-dialog>
 </template>
 
 <script lang="ts" setup>
@@ -157,6 +180,8 @@ const keyword = ref(''); // 搜索关键字
 const type = ref([]); // 资源类型
 const bookRef = ref();
 const dialogVisible = ref(false);
+const dialogKzVisible = ref(false);
+const kzStr = ref('');
 const formRef = ref<FormInstance>();
 const rules = reactive<FormRules>({
   name: [
@@ -196,6 +221,29 @@ function doSearch() {
   getBookList();
 }
 
+function showKz() {
+  dialogKzVisible.value = true
+}
+function parseKz() {
+  let obj: Record<string,any>|string = kzStr.value
+  try{
+    obj = JSON.parse(obj) as Record<string,string>
+  } catch(e) {
+    ElMessage.error('非法的json')
+    return
+  }
+  form.id = 0;
+  form.name = obj.Title;
+  form.author = obj.Author
+  form.description = obj.Abstracts
+  form.pubdate = obj.IssueDate.substring(0, 10)
+  form.publisher = obj.Publisher
+  form.cover = obj.CoverUrl
+  form.isbn = obj.ExtendData.Isbn
+  dialogKzVisible.value = false
+  dialogVisible.value = true
+}
+
 function showAdd() {
   form.id = 0;
   form.mediaType = ['1'];
@@ -206,7 +254,7 @@ function showAdd() {
   form.description = '';
   form.pubdate = '';
   form.publisher = '';
-  dialogVisible.value = true;
+  dialogVisible.value = true
 }
 
 function onEdit(book: IBook) {

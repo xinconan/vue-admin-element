@@ -107,6 +107,11 @@ const permissions = ref<IMenu[]>([
         icon: 'Reading',
       },
       {
+        path: '/form/cmp',
+        title: '工程科技图书馆',
+        icon: 'Reading',
+      },
+      {
         path: '/form/cxstar',
         title: '畅想之星',
         icon: 'Reading',

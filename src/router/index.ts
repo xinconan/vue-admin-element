@@ -61,6 +61,12 @@ export const routes: RouteRecordRaw[] = [
         meta: { title: '图灵电子书' },
       },
       {
+        name: 'cmp',
+        path: 'cmp',
+        component: () => import('@/views/form/cmp.vue'),
+        meta: { title: '工程科技数字' },
+      },
+      {
         name: 'cxstar',
         path: 'cxstar',
         component: () => import('@/views/form/cxstar.vue'),
