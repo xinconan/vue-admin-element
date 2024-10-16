@@ -45,7 +45,14 @@
                 :src="`https://file.ituring.com.cn/LargeCover/${book.coverKey}`"
               />
               <div>
-                <span>{{ book.name }}</span>
+                <a
+                  class="text-sm"
+                  :href="`https://www.ituring.com.cn/book/${book.id}`"
+                  rel="noreferrer nofollow noopener"
+                  target="_blank"
+                >
+                  {{ book.name }}
+                </a>
                 <el-button @click="addBook(book)" type="primary" size="small">添加到图书馆</el-button>
               </div>
             </el-card>
@@ -149,7 +156,7 @@ watch(
 .book-card {
   img {
     width: 100%;
-    min-height: 50px;
+    aspect-ratio: 7/10;
   }
 }
 </style>

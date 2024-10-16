@@ -1,6 +1,7 @@
 <template>
   <div class="flex flex-col h-full" v-loading="loading">
-    <div class="flex">
+    <div class="flex items-center">
+      <label>展现形式：</label>
       <el-radio-group v-model="type">
         <el-radio :value="1">文字</el-radio>
         <el-radio :value="2">图文</el-radio>
@@ -29,12 +30,20 @@
             :key="book.id"
           >
             <el-card class="book-card">
-              <img
-                :src="book.logo"
-              />
+              <span class="book-date text-xs">{{ book.publishDate }}</span>
+              <img :src="book.logo" />
               <div>
-                <span>{{ book.name }} {{ book.publishDate }}</span>
-                <el-button @click="addBook(book)" type="primary" size="small">添加到图书馆</el-button>
+                <a
+                  class="text-sm"
+                  :href="`https://www.epubit.com/bookDetails?id=${book.code}`"
+                  rel="noreferrer nofollow noopener"
+                  target="_blank"
+                >
+                  {{ book.name }}
+                </a>
+                <el-button @click="addBook(book)" type="primary" size="small">
+                  添加到图书馆
+                </el-button>
               </div>
             </el-card>
           </el-col>
@@ -61,6 +70,7 @@ import { ElMessage } from 'element-plus';
 interface IBook {
   name: string;
   id: string;
+  code: string;
   logo: string;
   authors: string;
   isbn: string;
@@ -96,14 +106,13 @@ function addBook(book: IBook) {
     description: '',
     mediaType: ['1'],
   };
-  
-  
-  post('/book', bookInfo).then(res => {
+
+  post('/book', bookInfo).then((res) => {
     ElMessage({
       type: 'success',
-      message: `${bookInfo.name} 添加成功`
-    })
-  })
+      message: `${bookInfo.name} 添加成功`,
+    });
+  });
 }
 
 function getBookList() {
@@ -112,7 +121,9 @@ function getBookList() {
     .then(({ data }) => {
       console.log(data);
       total.value = data.total;
-      data.records.forEach(item => item.publishDate = item.publishDate.substring(0, 10))
+      data.records.forEach(
+        (item) => (item.publishDate = item.publishDate.substring(0, 10))
+      );
       list.value = data.records;
     })
     .finally(() => {
@@ -141,8 +152,16 @@ function doSearch() {
   height: calc(100% - 32px);
 }
 .book-card {
+  position: relative;
+
+  .book-date {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
   img {
     width: 100%;
+    aspect-ratio: 7/10;
   }
 }
 </style>

@@ -83,6 +83,7 @@ function getAuthor(author: string) {
 .cxstar-item {
   img {
     width: 90px;
+    aspect-ratio: 7/10;
   }
 
   &:not(:last-child) {
