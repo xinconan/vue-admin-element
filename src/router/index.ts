@@ -67,6 +67,12 @@ export const routes: RouteRecordRaw[] = [
         meta: { title: '工程科技数字' },
       },
       {
+        name: 'sklib',
+        path: 'sklib',
+        component: () => import('@/views/form/sklib.vue'),
+        meta: { title: '中国社会科学文库' },
+      },
+      {
         name: 'cxstar',
         path: 'cxstar',
         component: () => import('@/views/form/cxstar.vue'),

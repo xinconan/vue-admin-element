@@ -112,6 +112,11 @@ const permissions = ref<IMenu[]>([
         icon: 'Reading',
       },
       {
+        path: '/form/sklib',
+        title: '中国社会科学文库',
+        icon: 'Reading',
+      },
+      {
         path: '/form/cxstar',
         title: '畅想之星',
         icon: 'Reading',

@@ -10,7 +10,7 @@ export interface ICxBook {
 }
 
 export interface IBook {
-  id: number;
+  id: number | string;
   name: string;
   author: string;
   translator?: string;
