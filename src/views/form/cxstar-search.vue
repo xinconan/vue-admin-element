@@ -105,8 +105,8 @@ import { get } from '@/utils/request';
 import { ICxRes, ICxBook } from '@/types/book';
 import { libraries, PUBLISHERS } from '@/utils/const';
 
-const pinst = ref('2050351c000001XXXX');
-const ifbg = ref(1);
+const pinst = ref('1ad691ca0000cc0bce');
+const ifbg = ref(0);
 const loading = ref(false);
 const sortField = ref('ORDERNO');
 const keyword = ref(''); // 搜索关键字
