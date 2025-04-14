@@ -37,6 +37,13 @@
           畅想
         </a>
         <a
+          :href="`https://ycfw.library.hb.cn:8000/vpn/10/https/P75YPLUDQB3YIZLTF3SX85B/Book/Detail?ruid=${book.ruid}`"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
+          湖北
+        </a>
+        <a
           :href="`https://elib.cqlib.cn:8081/interlibSSO/goto/65/++9bwrs-q9bnl/Book/Detail?ruid=${book.ruid}&packageruid=`"
           target="_blank"
           rel="noreferrer noopener"
