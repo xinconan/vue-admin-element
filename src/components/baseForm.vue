@@ -4,7 +4,7 @@
   </el-form-item>
   
 </template>
-<script setup>
+<script lang="ts" setup>
 import { reactive, ref } from 'vue';
 
 const COMPONENT_NAME = 'BaseForm'

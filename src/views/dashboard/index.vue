@@ -10,7 +10,7 @@
     
   </el-form>
 </template>
-<script setup>
-import fieldCollapse from '@/components/fieldCollapse';
-import baseForm from '@/components/baseForm';
+<script lang="ts" setup>
+import fieldCollapse from '@/components/fieldCollapse.vue';
+import baseForm from '@/components/baseForm.vue';
 </script>

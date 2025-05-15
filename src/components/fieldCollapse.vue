@@ -1,4 +1,5 @@
-<script>
+<script lang="ts">
+// @ts-nocheck
 import {h, useSlots, nextTick} from 'vue'
 export default {
   name: "fieldCollapse",

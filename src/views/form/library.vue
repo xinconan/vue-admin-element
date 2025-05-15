@@ -202,7 +202,7 @@ const rules = reactive<FormRules>({
   ],
 });
 
-const form = reactive({
+const form = reactive<IBook>({
   id: 0,
   name: '',
   isbn: '',
@@ -294,7 +294,8 @@ function onSubmit(formEl: FormInstance | undefined) {
         ...form,
       };
       let url = `/book/${form.id}`;
-      if (params.id <= 0) {
+      const isAdd = Number(params.id) <= 0;
+      if (isAdd) {
         url = '/book';
       }
       post(url, params)
@@ -303,7 +304,7 @@ function onSubmit(formEl: FormInstance | undefined) {
           formEl.resetFields();
           ElMessage({
             type: 'success',
-            message: params.id <= 0 ? '新增成功' : `修改成功`,
+            message: isAdd ? '新增成功' : `修改成功`,
           });
           getBookList();
         })
