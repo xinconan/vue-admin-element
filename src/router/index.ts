@@ -99,6 +99,17 @@ export const routes: RouteRecordRaw[] = [
     ],
   },
   {
+    path: '/comp',
+    component: Layout,
+    children: [
+      {
+        name: 'md-editor',
+        path: 'md-editor',
+        component: () => import('@/views/comp/md-editor.vue'),
+      },
+    ],
+  },
+  {
     path: '/util',
     component: Layout,
     children: [

@@ -144,8 +144,13 @@ const permissions = ref<IMenu[]>([
     icon: 'Medal',
     children: [
       {
+        path: '/comp/md-editor',
+        title: 'md-editor',
+        icon: 'Document',
+      },
+      {
         path: '/comp/comp1',
-        title: '组件1',
+        title: '组件不存在',
         icon: '',
       },
     ],
