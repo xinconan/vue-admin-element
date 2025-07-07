@@ -51,7 +51,7 @@
           重庆
         </a>
         <a
-          :href="`https://portal.sclib.org/interlibSSO/goto/214/++9bwrs-q9bnl/Book/Detail?ruid=${book.ruid}`"
+          :href="`https://portal.sclib.cn/interlibSSO/goto/214/++9bwrs-q9bnl/Book/Detail?ruid=${book.ruid}`"
           target="_blank"
           rel="noreferrer noopener"
         >
