@@ -16,7 +16,7 @@ export const useAppStore = defineStore('app', {
   },
   // 本地持久化
   persist: {
-    paths: ['user', 'chineseToken'],
+    pick: ['user', 'chineseToken'],
   },
   getters: {
     getCollapse(): boolean {
