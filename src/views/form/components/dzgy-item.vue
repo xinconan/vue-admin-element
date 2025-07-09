@@ -56,7 +56,7 @@
 <script lang="ts" setup>
 import { watch } from 'vue'
 import { useClipboard } from '@vueuse/core';
-import { ICxBook } from '../../../../types/book';
+import type { ICxBook } from '@/types/book';
 import { post } from '../../../utils/request';
 import { ElMessage } from 'element-plus';
 

@@ -102,7 +102,7 @@
 import cxstarItem from './components/cxstar-item.vue';
 import { ref, watch } from 'vue';
 import { get } from '@/utils/request';
-import { ICxRes, ICxBook } from '@/types/book';
+import type { ICxRes, ICxBook } from '@/types/book';
 import { libraries, PUBLISHERS } from '@/utils/const';
 
 const pinst = ref('1ad691ca0000cc0bce');

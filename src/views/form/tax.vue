@@ -130,11 +130,10 @@
 </template>
 
 <script lang="ts" setup>
-import { FormInstance } from 'element-plus';
-import type { FormRules } from 'element-plus';
+import type { FormInstance, FormRules } from 'element-plus';
 import { reactive, ref } from 'vue';
 import type { CSSProperties } from 'vue';
-import { getTax, ITaxResult, ITaxInfo } from '../../utils/tax';
+import { getTax, type ITaxInfo } from '../../utils/tax';
 
 interface Mark {
   style: CSSProperties;

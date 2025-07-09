@@ -56,7 +56,7 @@
 </template>
 
 <script lang="ts" setup>
-import { IBook } from '../../../../types/book';
+import type { IBook } from '@/types/book';
 import { CAREGORY_MAP, MEDIA_TYPE_MAP } from '@/utils/const';
 import { useClipboard } from '@vueuse/core';
 import { ElMessage } from 'element-plus';

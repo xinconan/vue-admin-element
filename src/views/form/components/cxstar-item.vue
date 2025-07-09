@@ -51,13 +51,6 @@
           重庆
         </a>
         <a
-          :href="`https://portal.sclib.cn/interlibSSO/goto/214/++9bwrs-q9bnl/Book/Detail?ruid=${book.ruid}`"
-          target="_blank"
-          rel="noreferrer noopener"
-        >
-          四川
-        </a>
-        <a
           :href="`https://sso.cdclib.org/interlibSSO/goto/49/++9bwrs-q9bnl/Book/Detail?ruid=${book.ruid}`"
           target="_blank"
           rel="noreferrer noopener"
@@ -123,7 +116,7 @@
 
 <script lang="ts" setup>
 import { reactive, ref, watch } from 'vue';
-import { ICxBook } from '../../../../types/book';
+import type { ICxBook } from '@/types/book';
 import { post } from '../../../utils/request';
 import { ElMessage } from 'element-plus';
 import { useClipboard } from '@vueuse/core';

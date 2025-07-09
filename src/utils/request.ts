@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from 'axios';
+import axios, { type AxiosResponse } from 'axios';
 import { ElMessage } from 'element-plus';
 const req = axios.create({
   withCredentials: true,

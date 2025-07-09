@@ -161,7 +161,7 @@
 import { ref, watch, reactive } from 'vue';
 import { get, post } from '../../utils/request';
 import BookItem from './components/book-item.vue';
-import { IBook } from '@/types/book';
+import type { IBook } from '@/types/book';
 import type { FormRules, FormInstance } from 'element-plus';
 import { ElMessage } from 'element-plus';
 import { MEDIA_TYPE, CATEGORY } from '@/utils/const';

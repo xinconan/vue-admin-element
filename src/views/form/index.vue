@@ -20,7 +20,7 @@
 import { ref, watchEffect } from 'vue';
 import { get } from '../../utils/request';
 import DzgyItem from './components/dzgy-item.vue';
-import { ICxBook } from '@/types/book';
+import type { ICxBook } from '@/types/book';
 
 interface IBook {
   Abstracts: string;

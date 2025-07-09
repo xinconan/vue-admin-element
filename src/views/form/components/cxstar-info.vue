@@ -82,7 +82,7 @@
 import cxstarItem from './cxstar-item.vue';
 import { ref, watch } from 'vue';
 import { get } from '../../../utils/request';
-import { ICxRes, ICxBook } from '../../../../types/book';
+import type { ICxRes, ICxBook } from '@/types/book';
 import { PUBLISHERS, PUBDATES } from '../../../utils/const';
 
 const props = defineProps<{

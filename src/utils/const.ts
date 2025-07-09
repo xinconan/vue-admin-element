@@ -1,4 +1,4 @@
-import { TagProps } from 'element-plus';
+import type { TagProps } from 'element-plus';
 
 export const libraries = [
   {

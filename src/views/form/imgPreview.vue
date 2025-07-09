@@ -15,7 +15,7 @@
 </template>
 
 <script lang="ts" setup>
-import { UploadFile, UploadInstance } from 'element-plus';
+import type { UploadFile, UploadInstance } from 'element-plus';
 import { onUnmounted, ref } from 'vue';
 
 const upload = ref<UploadInstance>();

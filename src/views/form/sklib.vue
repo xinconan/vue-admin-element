@@ -59,7 +59,7 @@
 import { ref, watch, watchEffect } from 'vue';
 import { get, post } from '../../utils/request';
 import BookItem from './components/book-item.vue';
-import { IBook } from '@/types/book';
+import type { IBook } from '@/types/book';
 import { ElMessage } from 'element-plus';
 
 interface ISklibBook {

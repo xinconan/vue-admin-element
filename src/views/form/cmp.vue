@@ -38,7 +38,7 @@
 import { ref, watchEffect } from 'vue';
 import { get, post } from '../../utils/request';
 import BookItem from './components/book-item.vue';
-import { ICmpRes, IBook } from '@/types/book';
+import type { ICmpRes, IBook } from '@/types/book';
 import { ElMessage } from 'element-plus';
 
 const loading = ref(true);
