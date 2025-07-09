@@ -28,6 +28,7 @@
     "@types/node": "^22.15.18",
     "@types/nprogress": "^0.2.3",
     "@vitejs/plugin-vue": "^6.0.0",
+    "@vue/tsconfig": "^0.7.0",
     "sass": "^1.89.2",
     "tailwindcss": "^4.1.11",
     "typescript": "^5.8.3",
