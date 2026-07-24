@@ -1,6 +1,6 @@
 <template>
-  <div class="flex flex-col h-full" v-loading="loading">
-    <div class="flex items-center mb-4">
+  <div class="flex flex-col h-full gap-3" v-loading="loading">
+    <div class="flex items-center">
       <el-input
         class="ml-4 mr-4"
         style="width: 300px"
@@ -326,6 +326,6 @@ watch(
 
 <style lang="scss" scoped>
 .content {
-  height: calc(100% - 64px);
+  height: calc(100% - 86px);
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col h-full" v-loading="loading">
+  <div class="flex flex-col h-full gap-3" v-loading="loading">
     <div class="flex items-center">
       <label>展现形式：</label>
       <el-radio-group v-model="type">
@@ -19,7 +19,7 @@
             <li>- {{ book.name.replace('【抢读版】', '') }}</li>
           </template>
         </ul>
-        <el-row v-else :gutter="10">
+        <el-row v-else class="book-grid" :gutter="10">
           <el-col
             :xs="6"
             :sm="6"
@@ -149,8 +149,14 @@ function doSearch() {
 
 <style lang="scss" scoped>
 .content {
-  height: calc(100% - 32px);
+  height: calc(100% - 86px);
 }
+
+.book-grid {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
 .book-card {
   position: relative;
 
