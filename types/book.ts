@@ -21,6 +21,8 @@ export interface IBook {
   description: string;
   categoryId?: string;
   mediaType: string[];
+  /** 中文在线图书 id，用于获取下载地址 */
+  shId?: string;
 }
 
 export interface ICxRes {
